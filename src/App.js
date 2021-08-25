@@ -1,0 +1,42 @@
+import React from 'react';
+import { 
+  BrowserRouter as Router, 
+  Switch, 
+  Route } from 'react-router-dom';
+import {
+  ChakraProvider,
+  Box,
+  VStack,
+  Grid,
+  theme,
+} from '@chakra-ui/react';
+import { ColorModeSwitcher } from './ColorModeSwitcher';
+
+import LoginSelector from './pages/LoginSelector';
+import StudentLogin from './pages/StudentLogin';
+import TeacherLogin from './pages/TeacherLogin';
+import StudentDashboard from './pages/StudentDashboard';
+
+function App() {
+  return (
+    <Router>
+      <ChakraProvider theme={theme}>
+        <Box textAlign="center" fontSize="xl">
+          <Grid minH="100vh" p={3}>
+            <ColorModeSwitcher justifySelf="flex-end" />
+            <VStack spacing={8}>
+              <Switch>
+                <Route exact path="/" component={LoginSelector} />
+                <Route exact path="/studentlogin" component={StudentLogin} />
+                <Route exact path="/teacherlogin" component={TeacherLogin} />
+                <Route exact path="/studentdashboard" component={StudentDashboard} />
+              </Switch>
+            </VStack>
+          </Grid>
+        </Box>
+    </ChakraProvider>
+    </Router>
+  );
+}
+
+export default App;
