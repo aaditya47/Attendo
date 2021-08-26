@@ -16,6 +16,7 @@ import LoginSelector from './pages/LoginSelector';
 import StudentLogin from './pages/StudentLogin';
 import TeacherLogin from './pages/TeacherLogin';
 import StudentDashboard from './pages/StudentDashboard';
+import LeaveForm from './pages/LeaveForm'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                 <Route exact path="/studentlogin" component={StudentLogin} />
                 <Route exact path="/teacherlogin" component={TeacherLogin} />
                 <Route exact path="/studentdashboard" component={StudentDashboard} />
+                <Route exact path="/leaveform" component={LeaveForm} />
               </Switch>
             </VStack>
           </Grid>

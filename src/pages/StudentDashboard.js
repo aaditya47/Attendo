@@ -18,22 +18,22 @@ export default function StudentDashboard() {
     {
     sem:"1",
     subject:"Computer Essentials",
-    attendance:"80%"
+    attendance:"80"
     },
     {
     sem:"2",
     subject:"C programming",
-    attendance:"75%"
+    attendance:"75"
     },
     {
     sem:"3",
     subject:"Data Structures",
-    attendance:"82%"
+    attendance:"82"
     },
     {
     sem:"4",
     subject:"Design and Analysis of Algorithms",
-    attendance:"90%"
+    attendance:"90"
     },
     {
     sem:"5",
@@ -84,7 +84,7 @@ export default function StudentDashboard() {
                 <HStack spacing="24px">
                 <Grid templateColumns="repeat(4, 1fr)" gap={6}>
                     {subjectWise?
-                    attendance.filter((el)=>{return filter===el.sem}).map((item,key) =>(
+                    attendance.filter((el)=>{return filter===el.sem}).map((item) =>(
                         <Box>
                         <AttendanceDisplay semester={item.sem} subject={item.subject} attendance={item.attendance}/> 
                         </Box>
