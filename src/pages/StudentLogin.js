@@ -30,7 +30,9 @@ export default function StudentLogin() {
                             <Input type="password" placeholder="Password" />
                         </FormControl>
                         <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4}>
+                            <Link href="/leaveform">
                             Sign In
+                            </Link>
                         </Button>
                     </form>
                     <Button mt={4} colorScheme="teal" variant="link">
