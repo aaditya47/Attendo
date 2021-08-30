@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
     Table,
     Thead,
@@ -8,7 +7,6 @@ import {
     Th,
     Td,
     TableCaption,
-    Box
   } from "@chakra-ui/react"
 
 export default function TeacherTimeTable() {
