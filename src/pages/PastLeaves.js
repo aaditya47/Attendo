@@ -64,7 +64,7 @@ export default function PastLeaves() {
                                     </Tbody>
                                 </Table>
                             )
-                        }
+                        })
                     }
                 </Box>
             </Box>

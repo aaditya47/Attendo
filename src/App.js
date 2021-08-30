@@ -18,6 +18,7 @@ import TeacherLogin from './pages/TeacherLogin';
 import StudentDashboard from './pages/StudentDashboard';
 import LeaveForm from './pages/LeaveForm';
 import PastLeaves from './pages/PastLeaves';
+import TeacherTimeTable from './pages/TeacherTimeTable';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 <Route exact path="/studentdashboard" component={StudentDashboard} />
                 <Route exact path="/leaveform" component={LeaveForm} />
                 <Route exact path="/pastleaves" component={PastLeaves} />
+                <Route exact path="/teachertimetable" component={TeacherTimeTable} />
               </Switch>
             </VStack>
           </Grid>
