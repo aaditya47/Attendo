@@ -1,8 +1,9 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 import {
   ChakraProvider,
   Box,
@@ -40,7 +41,7 @@ function App() {
             </VStack>
           </Grid>
         </Box>
-    </ChakraProvider>
+      </ChakraProvider>
     </Router>
   );
 }

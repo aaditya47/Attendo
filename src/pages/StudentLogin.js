@@ -1,17 +1,17 @@
 import React from 'react';
 import {
-  Flex,
-  Box,
-  Heading,
-  FormControl,
-  FormLabel,
-  Input,
-  Link,
-  Button
+    Flex,
+    Box,
+    Heading,
+    FormControl,
+    FormLabel,
+    Input,
+    Link,
+    Button
 } from '@chakra-ui/react';
 
 export default function StudentLogin() {
-    return(
+    return (
         <Flex width="full" align="center" justify="center">
             <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8}>
                 <Box textAlign="center">
@@ -31,7 +31,7 @@ export default function StudentLogin() {
                         </FormControl>
                         <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4}>
                             <Link href="/leaveform">
-                            Sign In
+                                Sign In
                             </Link>
                         </Button>
                     </form>

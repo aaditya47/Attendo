@@ -1,17 +1,17 @@
 import React from 'react';
 import {
-  Flex,
-  Box,
-  Heading,
-  FormControl,
-  FormLabel,
-  Input,
-  Link,
-  Button
+    Flex,
+    Box,
+    Heading,
+    FormControl,
+    FormLabel,
+    Input,
+    Link,
+    Button
 } from '@chakra-ui/react';
 
 export default function TeacherLogin() {
-    return(
+    return (
         <Flex width="full" align="center" justify="center">
             <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8}>
                 <Box textAlign="center">
