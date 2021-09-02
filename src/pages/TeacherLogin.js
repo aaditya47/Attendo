@@ -31,7 +31,7 @@ export default function TeacherLogin() {
                         </FormControl>
                         <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4}>
                             <Link href="/teachertimetable">
-                            Sign In
+                                Sign In
                             </Link>
                         </Button>
                     </form>

@@ -1,6 +1,7 @@
 import { React } from 'react';
 import { useDisclosure, VStack } from "@chakra-ui/react"
 import {
+  Box,
   Drawer,
   DrawerBody,
   DrawerHeader,
@@ -20,7 +21,7 @@ import {
 } from "@chakra-ui/react"
 
 import { Line } from 'react-chartjs-2'
-import { InfoIcon } from '@chakra-ui/icons'
+import { HamburgerIcon } from '@chakra-ui/icons'
 export default function Profile(props) {
 
   const data = {
@@ -40,7 +41,7 @@ export default function Profile(props) {
         variant="outline"
         colorScheme="teal"
         aria-label="Send email"
-        icon={<InfoIcon />}
+        icon={<HamburgerIcon />}
         onClick={onOpen}
       />
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
@@ -50,17 +51,21 @@ export default function Profile(props) {
           <DrawerBody>
             <VStack spacing={4} align="left">
               <HStack spacing={2}>
-                <Avatar>
-                  <AvatarBadge boxSize="1.25em" bg="green.500" />
-                </Avatar>
-                <Text >
-                  Welcome  {props.Name} !!
-                </Text>
+                <Box>
+                  <Avatar>
+                    <AvatarBadge boxSize="1.25em" bg="green.500" />
+                  </Avatar>
+                </Box>
+                <Box>
+                  <Text>
+                    Welcome  {props.Name}!
+                  </Text>
+                </Box>
               </HStack>
               <Text >
                 <b>Roll Number</b> : {props.RollNo}
               </Text>
-              {props.student ? <Text >
+              {props.student ? <Text>
                 <b>Class/Section</b> : {props.dept} - {props.section}
               </Text> :
                 <VStack align="left" spacing={3}>

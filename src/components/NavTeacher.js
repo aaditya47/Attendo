@@ -9,13 +9,17 @@ import { ChevronRightIcon } from '@chakra-ui/icons'
 
 export default function NavTeacher() {
     return (
-        <Breadcrumb spacing="8px" separator={<ChevronRightIcon color="orange.500" />}>
+        <Breadcrumb spacing="8px" separator={<ChevronRightIcon color="teal.500" />}>
             <BreadcrumbItem>
                 <BreadcrumbLink href="/teachertimetable">Time Table</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
                 <BreadcrumbLink href="/attendanceupdate">Update Attendance</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+                <BreadcrumbLink href="/leaveapprove">Approve Student Leave</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>

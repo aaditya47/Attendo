@@ -10,7 +10,7 @@ import {
     Grid
 } from "@chakra-ui/react";
 import AttendanceDisplay from "../components/AttendanceDisplay";
-import NavStudent from '../components/NavStudent' 
+import NavStudent from '../components/NavStudent'
 import Profile from "../components/Profile";
 
 export default function StudentDashboard() {
@@ -61,11 +61,11 @@ export default function StudentDashboard() {
     return (
         <Box>
             <VStack spacing={4}>
-            <Box style={{position:"absolute", top:5,left:5}}>
-                <Profile Name={'Samyukth'} RollNo={'CB.EN.U4CSE18451'} student={true} dept={'CSE'} section={'E'}/>
-            </Box>
-             <Box align="center">
-                 <NavStudent/>
+                <Box style={{ position: "absolute", top: 5, left: 5 }}>
+                    <Profile Name={'Samyukth'} RollNo={'CB.EN.U4CSE18451'} student={true} dept={'CSE'} section={'E'} />
+                </Box>
+                <Box align="center">
+                    <NavStudent />
                 </Box>
                 <Box p={8} textAlign="left">
                     <Heading alignItems="left">

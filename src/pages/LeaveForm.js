@@ -23,11 +23,11 @@ export default function LeaveForm() {
     const [isDoc, setIsDoc] = useState(false)
     return (
         <VStack spacing={5}>
-            <Box style={{position:"absolute", top:5,left:5}}>
-                <Profile Name={'Samyukth'} RollNo={'CB.EN.U4CSE18451'} student={true} dept={'CSE'} section={'E'}/>
+            <Box style={{ position: "absolute", top: 5, left: 5 }}>
+                <Profile Name={'Samyukth'} RollNo={'CB.EN.U4CSE18451'} student={true} dept={'CSE'} section={'E'} />
             </Box>
             <Box align="center">
-                <NavStudent/>
+                <NavStudent />
             </Box>
             <Flex width="full" align="center" justify="center">
                 <Box p={8} textAlign="center">

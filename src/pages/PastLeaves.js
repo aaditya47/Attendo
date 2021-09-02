@@ -9,12 +9,16 @@ import {
     Tr,
     Th,
     Td,
-    IconButton
+    IconButton,
+    VStack
 } from "@chakra-ui/react";
 
 import {
     DeleteIcon
 } from "@chakra-ui/icons";
+
+import Profile from "../components/Profile";
+import NavStudent from "../components/NavStudent";
 
 // Todo: Handle delete button
 

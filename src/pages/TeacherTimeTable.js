@@ -40,11 +40,11 @@ export default function TeacherTimeTable() {
     ]
     return (
         <VStack spacing="50px">
-             <Box style={{position:"absolute", top:5,left:5}}>
-                <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'}/>
+            <Box style={{ position: "absolute", top: 5, left: 5 }}>
+                <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'} />
             </Box>
             <Box align="center">
-                <NavTeacher/>
+                <NavTeacher />
             </Box>
             <Heading mb={5}>
                 Here's your time table

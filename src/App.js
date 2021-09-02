@@ -21,6 +21,7 @@ import LeaveForm from './pages/LeaveForm';
 import PastLeaves from './pages/PastLeaves';
 import TeacherTimeTable from './pages/TeacherTimeTable';
 import AttendanceUpdate from './pages/AttendanceUpdate';
+import LeaveApprove from './pages/LeaveApprove';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                 <Route exact path="/pastleaves" component={PastLeaves} />
                 <Route exact path="/teachertimetable" component={TeacherTimeTable} />
                 <Route exact path="/attendanceupdate" component={AttendanceUpdate} />
+                <Route exact path="/leaveapprove" component={LeaveApprove} />
               </Switch>
             </VStack>
           </Grid>

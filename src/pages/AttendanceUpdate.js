@@ -43,72 +43,17 @@ export default function AttendanceUpdate() {
     ]
     const subjectStud = ['Amit', 'Ravi', 'Hari', 'Aaditya']
     return (
-<<<<<<< HEAD
-                                    <VStack spacing={4}>
-                                                  <Box style={{position:"absolute", top:5,left:5}}>
-                                                    <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'}/>
-                                                    </Box>
-                                            <Box align="center">
-                                                <NavTeacher/>
-                                            </Box>
-                                    <Box>
-                                            <Box textAlign="center" mb={5}>
-                                                <Heading>
-                                                    Update your Attendance Here!
-                                                </Heading>
-                                            </Box>
-                                    <HStack spacing={4} mb={5}>
-                                            <Text>Choose Year</Text>
-                                            <Select variant="filled" value={filter} 
-                                                    onChange={(event) => { setFilter(event.target.value)
-                                                    setSubmit(false)
-                                                    setFilterSubject(null)
-                                                    }} placeholder="Select option">
-                                                    <option value="1">1st Year</option>
-                                                    <option value="2" >2nd Year</option>
-                                                    <option value="3">3rd Year</option>
-                                                    <option value="4">4th Year</option>
-                                            </Select>
-                                            <Button type="submit" onClick={()=>setSubmit(true)}colorScheme="teal" variant="outline">
-                                                Proceed
-                                            </Button>
-                                    {
-                                        filter&&submit? 
-                                                <HStack spacing={4}>
-                                        <Select variant="filled" value={filterSubject} width="full"
-                                                    onChange={(event) => { setFilterSubject(event.target.value) }} placeholder="Select option">
-                                                    {subjects.filter((el) => { return filter === el.Year }).map((item)=>{
-                                                        return(<option>{item.subject}</option>)
-                                                    })}
-                                                </Select>
-                                                <SingleDatepicker name="date-input" date={startDate} width="full" onDateChange={setStartDate} />
-                                                </HStack>
-                                                :null
-                                    }
-                                    </HStack>
-                            </Box>
-                            {filterSubject?
-                                    <Table variant="striped" colorScheme="teal" mb={5}>
-                                    <Thead>
-                                        <Tr>
-                                            <Th>Name</Th>
-                                            <Th>Attended?</Th>
-                                        </Tr>
-                                    </Thead>
-                                    <Tbody>
-                                    {subjectStud.map((item) => {
-                                            return (
-                                                <Tr>
-                                                    <Td>{item}</Td>
-                                                    <Td><Checkbox colorScheme="green"/></Td>
-                                                </Tr>
-                                            )
-=======
         <VStack>
             <Box>
-                <Box textAlign="center" mb={5}>
+                <Box style={{ position: "absolute", top: 5, left: 5 }}>
+                    <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'} />
+                </Box>
+                <Box align="center">
+                    <NavTeacher />
+                </Box>
+                <Box textAlign="center" my={5}>
                     <Heading>
-                        Update your Attendance Here!
+                        Update attendance here!
                     </Heading>
                 </Box>
                 <HStack spacing="50px" mb={5}>
@@ -134,7 +79,6 @@ export default function AttendanceUpdate() {
                                     onChange={(event) => { setFilterSubject(event.target.value) }} placeholder="Select option">
                                     {subjects.filter((el) => { return filter === el.Year }).map((item) => {
                                         return (<option>{item.subject}</option>)
->>>>>>> 550f59f2d24cac317ad63c8fa0426f633a83e3f9
                                     })}
                                 </Select>
                                 <SingleDatepicker name="date-input" date={startDate} width="full" onDateChange={setStartDate} />
