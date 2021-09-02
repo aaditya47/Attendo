@@ -23,7 +23,6 @@ import {
 import { Line } from 'react-chartjs-2'
 import { HamburgerIcon } from '@chakra-ui/icons'
 export default function Profile(props) {
-
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr'],
     datasets: [
