@@ -74,7 +74,7 @@ export default function StudentDashboard() {
                 </Box>
                 <HStack>
                     <Text color="gray.500">
-                        Subject Wise Attendance ?
+                        Semester Wise Attendance ?
                     </Text>
                     <Switch id="attendanceSummary" value={subjectWise} onChange={() => { setSubjectWise(!subjectWise) }} />
                     {subjectWise ? <Select variant="filled" value={filter}
@@ -89,21 +89,24 @@ export default function StudentDashboard() {
                         <option value="8">Semester 8</option>
                     </Select> : null}
                 </HStack>
-                <HStack spacing="24px">
-                    <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+                <Box>
                         {subjectWise ?
                             attendance.filter((el) => { return filter === el.sem }).map((item) => (
+                                <Grid templateColumns="repeat(4, 1fr)" gap={6}>
                                 <Box>
                                     <AttendanceDisplay semester={item.sem} subject={item.subject} attendance={item.attendance} />
                                 </Box>
+                                </Grid>
                             )) :
-                            attendance.map((item, key) => (
-                                <Box my={4}>
+                            attendance.map((item) => (
+                                <Grid gap={6} templateColumns="repeat(4, 1fr)">
+                                <Box>
                                     <AttendanceDisplay semester={item.sem} subject={item.subject} attendance={item.attendance} />
                                 </Box>
-                            ))}
-                    </Grid>
-                </HStack>
+                                </Grid>
+                            ))
+                            }
+                </Box>
             </VStack>
         </Box>
     );

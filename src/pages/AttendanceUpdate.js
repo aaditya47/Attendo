@@ -41,7 +41,24 @@ export default function AttendanceUpdate() {
             subject: ['Big Data Analytics']
         }
     ]
-    const subjectStud = ['Amit', 'Ravi', 'Hari', 'Aaditya']
+    const subjectStud=[
+        {
+            Name: 'Amit',
+            Roll:'CB.EN.U4CSE18451'
+        },
+        {
+            Name:'Ravi',
+            Roll:'CB.EN.U5CSE18402'
+        },
+        {
+            Name:'Hari',
+            Roll:'CB.EN.U4CSE18471'
+        },
+        {
+            Name:'Aaditya',
+            Roll:'CB.EN.U4CSE18434'
+        }
+    ]
     return (
         <VStack>
             <Box>
@@ -91,6 +108,7 @@ export default function AttendanceUpdate() {
                 <Table variant="striped" colorScheme="teal" mb={5}>
                     <Thead>
                         <Tr>
+                            <Th>Roll No</Th>
                             <Th>Name</Th>
                             <Th>Attended?</Th>
                         </Tr>
@@ -99,8 +117,9 @@ export default function AttendanceUpdate() {
                         {subjectStud.map((item) => {
                             return (
                                 <Tr>
-                                    <Td>{item}</Td>
-                                    <Td><Checkbox colorScheme="green" /></Td>
+                                    <Td>{item.Roll}</Td>
+                                    <Td>{item.Name}</Td>
+                                    <Td><Checkbox colorScheme="green" defaultIsChecked/></Td>
                                 </Tr>
                             )
                         })}

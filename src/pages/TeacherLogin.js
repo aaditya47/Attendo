@@ -7,11 +7,16 @@ import {
     FormLabel,
     Input,
     Link,
-    Button
+    Button,
+    Grid,
+    Image
 } from '@chakra-ui/react';
+
+import teacherLogin from '../assets/teacherLogin.svg'
 
 export default function TeacherLogin() {
     return (
+        <Grid templateColumns="repeat(2, 1fr)" gap={8}>
         <Flex width="full" align="center" justify="center">
             <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8}>
                 <Box textAlign="center">
@@ -43,5 +48,9 @@ export default function TeacherLogin() {
                 </Box>
             </Box>
         </Flex>
+        <Box boxSize="sm" mt={10}>
+            <Image src={teacherLogin} alt="Segun Adebayo" />
+        </Box>
+        </Grid>
     );
 }

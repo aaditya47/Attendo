@@ -6,12 +6,14 @@ import {
     Heading,
     Text,
     Link,
-    Button
+    Button,
+    VStack
 } from '@chakra-ui/react';
 
 export default function LoginSelector() {
     return (
         <Flex width="full" align="center" justify="center">
+            <VStack>
             <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8}>
                 <Box textAlign="center">
                     <Heading>
@@ -36,6 +38,7 @@ export default function LoginSelector() {
                     </Button>
                 </Box>
             </Box>
+            </VStack>
         </Flex>
     );
 }
