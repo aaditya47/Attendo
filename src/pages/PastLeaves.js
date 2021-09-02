@@ -9,11 +9,23 @@ import {
     Tr,
     Th,
     Td,
+<<<<<<< HEAD
     VStack
 } from "@chakra-ui/react";
 import NavStudent from '../components/NavStudent';
 import Profile from "../components/Profile";
 // Todo: Fix the map function
+=======
+    IconButton
+} from "@chakra-ui/react";
+
+import {
+    DeleteIcon
+} from "@chakra-ui/icons";
+
+// Todo: Handle delete button
+
+>>>>>>> 550f59f2d24cac317ad63c8fa0426f633a83e3f9
 export default function PastLeaves() {
     let leavedata = [
         {
@@ -75,6 +87,7 @@ export default function PastLeaves() {
                                             <Td>{data.daysLeave}</Td>
                                             <Td>{data.leavetype}</Td>
                                             <Td>{data.status}</Td>
+                                            <Td><IconButton icon={<DeleteIcon />} /></Td>
                                         </Tr>
                                     </Tbody>
                                 )

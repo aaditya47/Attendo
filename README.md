@@ -14,7 +14,7 @@ A scalable and responsive web app designed to help students keep track of their 
 
 #### Back-end:
 
-- Spring Boot
+- Nest JS
 
 #### Database:
 
