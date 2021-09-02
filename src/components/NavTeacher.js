@@ -3,24 +3,24 @@ import {
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
-  } from "@chakra-ui/react"
+} from "@chakra-ui/react"
 
-import { ChevronRightIcon } from '@chakra-ui/icons'  
+import { ChevronRightIcon } from '@chakra-ui/icons'
 
 export default function NavTeacher() {
-    return(
+    return (
         <Breadcrumb spacing="8px" separator={<ChevronRightIcon color="orange.500" />}>
-                    <BreadcrumbItem>
-                            <BreadcrumbLink href="/teachertimetable">Time Table</BreadcrumbLink>
-                    </BreadcrumbItem>
+            <BreadcrumbItem>
+                <BreadcrumbLink href="/teachertimetable">Time Table</BreadcrumbLink>
+            </BreadcrumbItem>
 
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href="/attendanceupdate">Update Attendance</BreadcrumbLink>
-                    </BreadcrumbItem>
+            <BreadcrumbItem>
+                <BreadcrumbLink href="/attendanceupdate">Update Attendance</BreadcrumbLink>
+            </BreadcrumbItem>
 
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href="/teacherlogin">Sign out</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    </Breadcrumb>
+            <BreadcrumbItem>
+                <BreadcrumbLink href="/teacherlogin">Sign out</BreadcrumbLink>
+            </BreadcrumbItem>
+        </Breadcrumb>
     )
 }
