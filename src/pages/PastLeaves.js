@@ -8,9 +8,16 @@ import {
     Tbody,
     Tr,
     Th,
-    Td
+    Td,
+    IconButton
 } from "@chakra-ui/react";
-// Todo: Fix the map function
+
+import {
+    DeleteIcon
+} from "@chakra-ui/icons";
+
+// Todo: Handle delete button
+
 export default function PastLeaves() {
     let leavedata = [
         {
@@ -65,6 +72,7 @@ export default function PastLeaves() {
                                             <Td>{data.daysLeave}</Td>
                                             <Td>{data.leavetype}</Td>
                                             <Td>{data.status}</Td>
+                                            <Td><IconButton icon={<DeleteIcon />} /></Td>
                                         </Tr>
                                     </Tbody>
                                 )
