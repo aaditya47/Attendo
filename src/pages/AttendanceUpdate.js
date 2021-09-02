@@ -16,6 +16,8 @@ import {
     Heading
 } from '@chakra-ui/react';
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
+import NavTeacher from '../components/NavTeacher';
+import Profile from '../components/Profile';
 export default function AttendanceUpdate() {
     const [startDate, setStartDate] = useState(new Date());
     const [filter, setFilter] = useState(null)
@@ -41,14 +43,20 @@ export default function AttendanceUpdate() {
     ]
     const subjectStud=['Amit','Ravi','Hari','Aaditya']
     return (
-        <VStack>
-        <Box>
+                                    <VStack spacing={4}>
+                                                  <Box style={{position:"absolute", top:5,left:5}}>
+                                                    <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'}/>
+                                                    </Box>
+                                            <Box align="center">
+                                                <NavTeacher/>
+                                            </Box>
+                                    <Box>
                                             <Box textAlign="center" mb={5}>
                                                 <Heading>
                                                     Update your Attendance Here!
                                                 </Heading>
                                             </Box>
-                                    <HStack spacing="50px" mb={5}>
+                                    <HStack spacing={4} mb={5}>
                                             <Text>Choose Year</Text>
                                             <Select variant="filled" value={filter} 
                                                     onChange={(event) => { setFilter(event.target.value)
@@ -60,12 +68,12 @@ export default function AttendanceUpdate() {
                                                     <option value="3">3rd Year</option>
                                                     <option value="4">4th Year</option>
                                             </Select>
-                                            <Button type="submit" onClick={()=>setSubmit(true)}colorScheme="teal" variant="outline" width="30%">
+                                            <Button type="submit" onClick={()=>setSubmit(true)}colorScheme="teal" variant="outline">
                                                 Proceed
                                             </Button>
                                     {
                                         filter&&submit? 
-                                                <HStack spacing="50px">
+                                                <HStack spacing={4}>
                                         <Select variant="filled" value={filterSubject} width="full"
                                                     onChange={(event) => { setFilterSubject(event.target.value) }} placeholder="Select option">
                                                     {subjects.filter((el) => { return filter === el.Year }).map((item)=>{

@@ -8,8 +8,11 @@ import {
     Tbody,
     Tr,
     Th,
-    Td
+    Td,
+    VStack
 } from "@chakra-ui/react";
+import NavStudent from '../components/NavStudent';
+import Profile from "../components/Profile";
 // Todo: Fix the map function
 export default function PastLeaves() {
     let leavedata = [
@@ -39,6 +42,13 @@ export default function PastLeaves() {
         }
     ];
     return (
+        <VStack spacing="50px"> 
+         <Box style={{position:"absolute", top:5,left:5}}>
+                <Profile Name={'Samyukth'} RollNo={'CB.EN.U4CSE18451'} student={true} dept={'CSE'} section={'E'}/>
+            </Box>
+        <Box align="center">
+                <NavStudent/>
+            </Box>
         <Flex width="full" align="center" justify="center">
             <Box p={8}>
                 <Box textAlign="center">
@@ -74,5 +84,6 @@ export default function PastLeaves() {
                 </Box>
             </Box>
         </Flex>
+        </VStack>
     );
 }

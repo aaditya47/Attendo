@@ -7,8 +7,11 @@ import {
     Tbody,
     Tr,
     Th,
-    Td
+    Td,
+    VStack
 } from "@chakra-ui/react"
+import NavTeacher from '../components/NavTeacher';
+import Profile from '../components/Profile';
 
 export default function TeacherTimeTable() {
     const attributes = ["Day", "8:50-9:40", "9:50-10:40", "11:00-11:50", "12:00-12:50", "2:00-3:50"]
@@ -36,7 +39,13 @@ export default function TeacherTimeTable() {
 
     ]
     return (
-        <Box>
+        <VStack spacing="50px">
+             <Box style={{position:"absolute", top:5,left:5}}>
+                <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'}/>
+            </Box>
+            <Box align="center">
+                <NavTeacher/>
+            </Box>
             <Heading mb={5}>
                 Here's your time table
             </Heading>
@@ -63,7 +72,7 @@ export default function TeacherTimeTable() {
                     })}
                 </Tbody>
             </Table>
-        </Box>
+        </VStack>
 
     );
 }
