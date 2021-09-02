@@ -9,13 +9,6 @@ import {
     Tr,
     Th,
     Td,
-<<<<<<< HEAD
-    VStack
-} from "@chakra-ui/react";
-import NavStudent from '../components/NavStudent';
-import Profile from "../components/Profile";
-// Todo: Fix the map function
-=======
     IconButton
 } from "@chakra-ui/react";
 
@@ -25,7 +18,6 @@ import {
 
 // Todo: Handle delete button
 
->>>>>>> 550f59f2d24cac317ad63c8fa0426f633a83e3f9
 export default function PastLeaves() {
     let leavedata = [
         {
@@ -54,49 +46,49 @@ export default function PastLeaves() {
         }
     ];
     return (
-        <VStack spacing="50px"> 
-         <Box style={{position:"absolute", top:5,left:5}}>
-                <Profile Name={'Samyukth'} RollNo={'CB.EN.U4CSE18451'} student={true} dept={'CSE'} section={'E'}/>
+        <VStack spacing="50px">
+            <Box style={{ position: "absolute", top: 5, left: 5 }}>
+                <Profile Name={'Samyukth'} RollNo={'CB.EN.U4CSE18451'} student={true} dept={'CSE'} section={'E'} />
             </Box>
-        <Box align="center">
-                <NavStudent/>
+            <Box align="center">
+                <NavStudent />
             </Box>
-        <Flex width="full" align="center" justify="center">
-            <Box p={8}>
-                <Box textAlign="center">
-                    <Heading>
-                        Here are your past leaves
-                    </Heading>
+            <Flex width="full" align="center" justify="center">
+                <Box p={8}>
+                    <Box textAlign="center">
+                        <Heading>
+                            Here are your past leaves
+                        </Heading>
+                    </Box>
+                    <Box my={4} textAlign="left">
+                        <Table>
+                            <Thead>
+                                <Tr>
+                                    <Th>Date</Th>
+                                    <Th>No Of Days</Th>
+                                    <Th>Leave Type</Th>
+                                    <Th>Status</Th>
+                                </Tr>
+                            </Thead>
+                            { // map json objects array in leave data to table
+                                leavedata.map((data, index) => {
+                                    return (
+                                        <Tbody>
+                                            <Tr>
+                                                <Td>{data.date}</Td>
+                                                <Td>{data.daysLeave}</Td>
+                                                <Td>{data.leavetype}</Td>
+                                                <Td>{data.status}</Td>
+                                                <Td><IconButton icon={<DeleteIcon />} /></Td>
+                                            </Tr>
+                                        </Tbody>
+                                    )
+                                })
+                            }
+                        </Table>
+                    </Box>
                 </Box>
-                <Box my={4} textAlign="left">
-                    <Table>
-                        <Thead>
-                            <Tr>
-                                <Th>Date</Th>
-                                <Th>No Of Days</Th>
-                                <Th>Leave Type</Th>
-                                <Th>Status</Th>
-                            </Tr>
-                        </Thead>
-                        { // map json objects array in leave data to table
-                            leavedata.map((data, index) => {
-                                return (
-                                    <Tbody>
-                                        <Tr>
-                                            <Td>{data.date}</Td>
-                                            <Td>{data.daysLeave}</Td>
-                                            <Td>{data.leavetype}</Td>
-                                            <Td>{data.status}</Td>
-                                            <Td><IconButton icon={<DeleteIcon />} /></Td>
-                                        </Tr>
-                                    </Tbody>
-                                )
-                            })
-                        }
-                    </Table>
-                </Box>
-            </Box>
-        </Flex>
+            </Flex>
         </VStack>
     );
 }
