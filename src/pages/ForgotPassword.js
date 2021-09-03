@@ -8,64 +8,48 @@ import {
     Input,
     Link,
     Button,
-    Switch,
-    HStack,
     Grid,
     Image
 } from '@chakra-ui/react';
 
-import signUp from '../assets/signUp.svg'
+import forgotPassword from '../assets/forgotPassword.svg'
 
-export default function Signup() {
+export default function ForgotPassword() {
     return (
         <Grid templateColumns="repeat(2, 1fr)" gap={10}>
         <Flex width="full" align="center" justify="left">
             <Box p={8} borderWidth={1} borderRadius={8}>
                 <Box textAlign="center">
                     <Heading>
-                        Signup
+                        Forgot Password
                     </Heading>
                 </Box>
                 <Box my={4} textAlign="left">
                     <form>
-                        <FormControl>
-                            <HStack spacing={3}>
-                                <FormLabel mt={1}>Student?</FormLabel>
-                                <Switch id="student-or-teacher" />
-                            </HStack>
-                        </FormControl>
-                        <FormControl  mt={4}>
+                        <FormControl  mt={6}>
                             <FormLabel>Roll Number</FormLabel>
                             <Input type="text" placeholder="Roll Number" />
                         </FormControl>
-                        <FormControl  mt={4}>
+                        <FormControl  mt={6}>
                             <FormLabel>Email ID</FormLabel>
                             <Input type="text" placeholder="Email ID" />
                         </FormControl>
-                        <FormControl  mt={4}>
-                            <FormLabel>Mobile Number</FormLabel>
-                            <Input type="text" placeholder="Mobile Number" />
-                        </FormControl>
-                        <FormControl mt={4}>
-                            <FormLabel>Password</FormLabel>
-                            <Input type="password" placeholder="Password" />
-                        </FormControl>
                         <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4}>
                             <Link href="#">
-                                Sign Up
+                                Get Password
                             </Link>
                         </Button>
                         <Button mt={4} colorScheme="teal" variant="link">
                         <Link href="/">
                             Lost your Way? Click here
                         </Link>
-                    </Button>
+                    </Button>                       
                     </form>
                 </Box>
             </Box>
         </Flex>
-        <Box boxSize="md" style={{paddingTop:"35%"}}>
-            <Image src={signUp}/>
+        <Box boxSize="sm" mt={10}>
+            <Image src={forgotPassword}/>
         </Box>
         </Grid>
     );

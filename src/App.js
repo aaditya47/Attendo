@@ -23,6 +23,7 @@ import TeacherTimeTable from './pages/TeacherTimeTable';
 import AttendanceUpdate from './pages/AttendanceUpdate';
 import LeaveApprove from './pages/LeaveApprove';
 import Signup from './pages/Signup';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
                 <Route exact path="/teachertimetable" component={TeacherTimeTable} />
                 <Route exact path="/attendanceupdate" component={AttendanceUpdate} />
                 <Route exact path="/leaveapprove" component={LeaveApprove} />
+                <Route exact path="/forgotpassword" component={ForgotPassword} />
               </Switch>
             </VStack>
           </Grid>

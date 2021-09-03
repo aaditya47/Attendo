@@ -10,7 +10,9 @@ import {
     Th,
     Td,
     IconButton,
-    VStack
+    VStack,
+    Alert,
+    AlertIcon,
 } from "@chakra-ui/react";
 
 import {
@@ -69,10 +71,11 @@ export default function LeaveApprove() {
                             Here are the details of leave applications by your students.
                         </Heading>
                     </Box>
-                    <Box textAlign="center">
-                        <Heading as="h2">
-                            Click on the check icon to approve the leave. Alternatively, click on the close icon to reject the leave.
-                        </Heading>
+                    <Box textAlign="center" mt={4}>
+                            <Alert status="info">
+                                <AlertIcon />
+                                Click on the check icon to approve the leave. Alternatively, click on the close icon to reject the leave.
+                            </Alert> 
                     </Box>
                     <Box my={4} textAlign="left">
                         <Table>
@@ -95,8 +98,8 @@ export default function LeaveApprove() {
                                                 <Td>{data.date}</Td>
                                                 <Td>{data.daysLeave}</Td>
                                                 <Td>{data.leavetype}</Td>
-                                                <Td><IconButton icon={<CheckIcon />} /></Td>
-                                                <Td><IconButton icon={<CloseIcon />} /></Td>
+                                                <Td><IconButton icon={<CheckIcon />} color="green.500"/></Td>
+                                                <Td><IconButton icon={<CloseIcon />}  color="red.500" /></Td>
                                             </Tr>
                                         </Tbody>
                                     )
