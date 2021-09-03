@@ -72,10 +72,10 @@ export default function LeaveApprove() {
                         </Heading>
                     </Box>
                     <Box textAlign="center" mt={4}>
-                            <Alert status="info">
-                                <AlertIcon />
-                                Click on the check icon to approve the leave. Alternatively, click on the close icon to reject the leave.
-                            </Alert> 
+                        <Alert status="info">
+                            <AlertIcon />
+                            Click on the check icon to approve the leave. Alternatively, click on the close icon to reject the leave.
+                        </Alert>
                     </Box>
                     <Box my={4} textAlign="left">
                         <Table>
@@ -98,8 +98,8 @@ export default function LeaveApprove() {
                                                 <Td>{data.date}</Td>
                                                 <Td>{data.daysLeave}</Td>
                                                 <Td>{data.leavetype}</Td>
-                                                <Td><IconButton icon={<CheckIcon />} color="green.500"/></Td>
-                                                <Td><IconButton icon={<CloseIcon />}  color="red.500" /></Td>
+                                                <Td><IconButton icon={<CheckIcon />} color="green.500" /></Td>
+                                                <Td><IconButton icon={<CloseIcon />} color="red.500" /></Td>
                                             </Tr>
                                         </Tbody>
                                     )

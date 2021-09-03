@@ -41,22 +41,22 @@ export default function AttendanceUpdate() {
             subject: ['Big Data Analytics']
         }
     ]
-    const subjectStud=[
+    const subjectStud = [
         {
             Name: 'Amit',
-            Roll:'CB.EN.U4CSE18451'
+            Roll: 'CB.EN.U4CSE18451'
         },
         {
-            Name:'Ravi',
-            Roll:'CB.EN.U5CSE18402'
+            Name: 'Ravi',
+            Roll: 'CB.EN.U5CSE18402'
         },
         {
-            Name:'Hari',
-            Roll:'CB.EN.U4CSE18471'
+            Name: 'Hari',
+            Roll: 'CB.EN.U4CSE18471'
         },
         {
-            Name:'Aaditya',
-            Roll:'CB.EN.U4CSE18434'
+            Name: 'Aaditya',
+            Roll: 'CB.EN.U4CSE18434'
         }
     ]
     return (
@@ -119,7 +119,7 @@ export default function AttendanceUpdate() {
                                 <Tr>
                                     <Td>{item.Roll}</Td>
                                     <Td>{item.Name}</Td>
-                                    <Td><Checkbox colorScheme="green" defaultIsChecked/></Td>
+                                    <Td><Checkbox colorScheme="green" defaultIsChecked /></Td>
                                 </Tr>
                             )
                         })}
