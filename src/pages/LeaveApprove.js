@@ -78,10 +78,11 @@ export default function LeaveApprove() {
                         <Table>
                             <Thead>
                                 <Tr>
+                                    <Th>Student Name</Th>
+                                    <Th>Student Roll Number</Th>
                                     <Th>Date</Th>
-                                    <Th>No Of Days</Th>
+                                    <Th>Days of Leave</Th>
                                     <Th>Leave Type</Th>
-                                    <Th>Status</Th>
                                 </Tr>
                             </Thead>
                             { // map json objects array in leave data to table
@@ -91,6 +92,7 @@ export default function LeaveApprove() {
                                             <Tr>
                                                 <Td>{data.studentname}</Td>
                                                 <Td>{data.studentrollnumber}</Td>
+                                                <Td>{data.date}</Td>
                                                 <Td>{data.daysLeave}</Td>
                                                 <Td>{data.leavetype}</Td>
                                                 <Td><IconButton icon={<CheckIcon />} /></Td>
