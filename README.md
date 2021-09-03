@@ -20,6 +20,10 @@ A scalable and responsive web app designed to help students keep track of their 
 
 - MongoDB
 
+#### API:
+
+- GraphQL
+
 ## 📷 Screenshots
 
 Coming soon!
