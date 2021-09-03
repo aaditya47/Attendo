@@ -90,22 +90,21 @@ export default function StudentDashboard() {
                     </Select> : null}
                 </HStack>
                 <Box>
+                <Grid templateColumns="repeat(4, 1fr)" gap={6}>
                         {subjectWise ?
                             attendance.filter((el) => { return filter === el.sem }).map((item) => (
-                                <Grid templateColumns="repeat(4, 1fr)" gap={6}>
                                 <Box>
                                     <AttendanceDisplay semester={item.sem} subject={item.subject} attendance={item.attendance} />
                                 </Box>
-                                </Grid>
                             )) :
                             attendance.map((item) => (
-                                <Grid gap={6} templateColumns="repeat(4, 1fr)">
                                 <Box>
                                     <AttendanceDisplay semester={item.sem} subject={item.subject} attendance={item.attendance} />
                                 </Box>
-                                </Grid>
+                            
                             ))
                             }
+                </Grid>
                 </Box>
             </VStack>
         </Box>

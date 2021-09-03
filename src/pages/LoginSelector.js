@@ -9,11 +9,16 @@ import {
     Button,
     VStack
 } from '@chakra-ui/react';
+import Typist from 'react-text-typist';
+import '../theme/Typist.css';
 
 export default function LoginSelector() {
     return (
         <Flex width="full" align="center" justify="center">
             <VStack>
+            <Box style={{position:"absolute",top:'20%'}}>
+            <Typist className={'myTypist'} cursorClassName={'myCursor'} sentences={['Attendo 📜', 'Attendance Made Easy 🗓']} loop={false} />
+            </Box>
             <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8}>
                 <Box textAlign="center">
                     <Heading>

@@ -1,0 +1,15 @@
+.typist-cursor {
+  font-size: 30px;
+  color: black;
+}
+/* This will apply to text and cursor */
+.myTypist {
+  font-size: 30px;
+  color: orange;
+}
+
+/* This will apply only to cursor */
+.myCursor {
+  font-size: 30px;
+  color: black;
+}

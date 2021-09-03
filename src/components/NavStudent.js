@@ -5,11 +5,9 @@ import {
     BreadcrumbLink,
 } from "@chakra-ui/react"
 
-import { ChevronRightIcon } from '@chakra-ui/icons'
-
 export default function NavStudent() {
     return (
-        <Breadcrumb spacing="8px" separator={<ChevronRightIcon color="orange.500" />}>
+        <Breadcrumb spacing="8px" separator='-'>
             <BreadcrumbItem>
                 <BreadcrumbLink href="/leaveform">Leave Form</BreadcrumbLink>
             </BreadcrumbItem>

@@ -5,11 +5,9 @@ import {
     BreadcrumbLink,
 } from "@chakra-ui/react"
 
-import { ChevronRightIcon } from '@chakra-ui/icons'
-
 export default function NavTeacher() {
     return (
-        <Breadcrumb spacing="8px" separator={<ChevronRightIcon color="teal.500" />}>
+        <Breadcrumb spacing="8px" separator='-'>
             <BreadcrumbItem>
                 <BreadcrumbLink href="/teachertimetable">Time Table</BreadcrumbLink>
             </BreadcrumbItem>
