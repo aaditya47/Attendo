@@ -22,6 +22,7 @@ import PastLeaves from './pages/PastLeaves';
 import TeacherTimeTable from './pages/TeacherTimeTable';
 import AttendanceUpdate from './pages/AttendanceUpdate';
 import LeaveApprove from './pages/LeaveApprove';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                 <Route exact path="/" component={LoginSelector} />
                 <Route exact path="/studentlogin" component={StudentLogin} />
                 <Route exact path="/teacherlogin" component={TeacherLogin} />
+                <Route exact path="/signup" component={Signup} />
                 <Route exact path="/studentdashboard" component={StudentDashboard} />
                 <Route exact path="/leaveform" component={LeaveForm} />
                 <Route exact path="/pastleaves" component={PastLeaves} />
