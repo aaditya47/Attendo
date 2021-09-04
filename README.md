@@ -1,4 +1,4 @@
-# Attendance Management System
+# Attendo 📜 Attendance Made Easy 🗓
 
 ## 📌 Introduction
 
