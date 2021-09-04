@@ -1,4 +1,4 @@
-# Attendo 📜 Attendance Made Easy 🗓
+# Attendo 📜: Attendance Made Easy 🗓
 
 ## 📌 Introduction
 
