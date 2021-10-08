@@ -53,14 +53,9 @@ export default function StudentLogin() {
                                 Sign In
                             </Link>
                         </Button>
-                    </form>
-                    <Button mt={4} colorScheme="teal" variant="link">
-                        <Link href="/">
-                            Not a student? Click here to go back
-                        </Link>
-                    </Button>
+                        </form>
+                    </Box>
                 </Box>
-            </Box>
         </Flex>
         <Box boxSize="sm" mt={10}>
             <Image src={studentLogin} alt="image" />

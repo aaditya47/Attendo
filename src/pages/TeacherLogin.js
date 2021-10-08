@@ -53,18 +53,13 @@ export default function TeacherLogin() {
                                 Sign In
                             </Link>
                         </Button>
-                    </form>
-                    <Button mt={4} colorScheme="teal" variant="link">
-                        <Link href="/">
-                            Not a teacher? Click here to go back
-                        </Link>
-                    </Button>
+                        </form>
+                    </Box>
                 </Box>
+            </Flex>
+            <Box boxSize="sm" mt={10}>
+                <Image src={teacherLogin} alt="Segun Adebayo" />
             </Box>
-        </Flex>
-        <Box boxSize="sm" mt={10}>
-            <Image src={teacherLogin} alt="Segun Adebayo" />
-        </Box>
         </Grid>
     );
 }

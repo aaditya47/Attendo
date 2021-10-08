@@ -21,43 +21,43 @@ export default function LoginSelector() {
             <Typist style={{'font-size':'2em','font-weight':'bold'}}className={'myTypist'} cursorClassName={'myCursor'} sentences={['Attendo 📜', 'Attendance Made Easy 🗓']} loop={false} />
             </Box>
             <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8}>
-                <Box textAlign="center">
-                    <Heading>
-                        Welcome!
-                    </Heading>
-                    <Text mt={2}>
-                        Please select your login method
-                    </Text>
+                    <Box textAlign="center">
+                        <Heading>
+                            Welcome!
+                        </Heading>
+                        <Text mt={2}>
+                            Please select your login method
+                        </Text>
+                    </Box>
+                    <Box my={4} textAlign="center">
+                        <Button colorScheme="teal" variant="ghost">
+                            <Link href="/studentlogin">
+                                Student
+                            </Link>
+                        </Button>
+                    </Box>
+                    <Box my={4} textAlign="center">
+                        <Button colorScheme="teal" variant="ghost">
+                            <Link href="/teacherlogin">
+                                Teacher
+                            </Link>
+                        </Button>
+                    </Box>
+                    <Box my={4} textAlign="center">
+                        <Button colorScheme="teal" variant="ghost">
+                            <Link href="/signup">
+                                New Around here?
+                            </Link>
+                        </Button>
+                    </Box>
+                    <Box my={4} textAlign="center">
+                        <Button colorScheme="teal" variant="ghost">
+                            <Link href="/forgotpassword">
+                                Forgot Password?
+                            </Link>
+                        </Button>
+                    </Box>
                 </Box>
-                <Box my={4} textAlign="center">
-                    <Button colorScheme="teal" variant="ghost">
-                        <Link href="/studentlogin">
-                            Student
-                        </Link>
-                    </Button>
-                </Box>
-                <Box my={4} textAlign="center">
-                    <Button colorScheme="teal" variant="ghost">
-                        <Link href="/teacherlogin">
-                            Teacher
-                        </Link>
-                    </Button>
-                </Box>
-                <Box my={4} textAlign="center">
-                    <Button colorScheme="teal" variant="ghost">
-                        <Link href="/signup">
-                            New Around here?
-                        </Link>
-                    </Button>
-                </Box>
-                <Box my={4} textAlign="center">
-                    <Button colorScheme="teal" variant="ghost">
-                        <Link href="/forgotpassword">
-                            Forgot Password?
-                        </Link>
-                    </Button>
-                </Box>
-            </Box>
             </VStack>
         </Flex>
     );

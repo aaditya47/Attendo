@@ -81,19 +81,19 @@ export default function Signup() {
                             <Link href="#">
                                 Sign Up
                             </Link>
-                        </Button>
-                        <Button mt={4} colorScheme="teal" variant="link">
-                        <Link href="/">
-                            Lost your Way? Click here
-                        </Link>
-                    </Button>
-                    </form>
+                            </Button>
+                            <Button mt={4} colorScheme="teal" variant="link">
+                                <Link href="/">
+                                    Lost your Way? Click here
+                                </Link>
+                            </Button>
+                        </form>
+                    </Box>
                 </Box>
+            </Flex>
+            <Box boxSize="md" style={{ paddingTop: "35%" }}>
+                <Image src={signUp} />
             </Box>
-        </Flex>
-        <Box boxSize="md" style={{paddingTop:"35%"}}>
-            <Image src={signUp}/>
-        </Box>
         </Grid>
     );
 }

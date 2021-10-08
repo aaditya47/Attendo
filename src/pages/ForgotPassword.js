@@ -63,11 +63,11 @@ export default function ForgotPassword() {
                     </Button>                       
                     </form>
                 </Box>
+                </Box>
+            </Flex>
+            <Box boxSize="sm" mt={10}>
+                <Image src={forgotPassword} />
             </Box>
-        </Flex>
-        <Box boxSize="sm" mt={10}>
-            <Image src={forgotPassword}/>
-        </Box>
         </Grid>
     );
 }
