@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState} from 'react';
 import {
     Flex,
     Box,
@@ -15,6 +15,20 @@ import {
 import teacherLogin from '../assets/teacherLogin.svg'
 
 export default function TeacherLogin() {
+    const onSubmit=(ID,password)=>{
+        if(ID && password){
+            //pass
+            setAllow(true);
+
+        }
+    else{
+        alert("Please enter the credentials");
+    }}
+
+    const [facultyId,setID] = useState('');
+    const [password,setPassword] = useState('');
+    const  [allow , setAllow] =useState(false)
+
     return (
         <Grid templateColumns="repeat(2, 1fr)" gap={8}>
         <Flex width="full" align="center" justify="center">
@@ -28,14 +42,14 @@ export default function TeacherLogin() {
                     <form>
                         <FormControl>
                             <FormLabel>Faculty ID</FormLabel>
-                            <Input type="text" placeholder="Faculty ID" />
+                            <Input type="text"  value={facultyId} onChange={(event)=> setID(event.target.value)} placeholder="Faculty ID" />
                         </FormControl>
                         <FormControl mt={6}>
                             <FormLabel>Password</FormLabel>
-                            <Input type="password" placeholder="Password" />
+                            <Input type="password" value={password} onChange={(event)=> setPassword(event.target.value)} placeholder="Password" />
                         </FormControl>
-                        <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4}>
-                            <Link href="/teachertimetable">
+                        <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>{onSubmit(facultyId,password)}}>
+                            <Link href={allow?"/teachertimetable":'#'}>
                                 Sign In
                             </Link>
                         </Button>

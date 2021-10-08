@@ -5,7 +5,7 @@
 /* This will apply to text and cursor */
 .myTypist {
   font-size: 30px;
-  color: orange;
+  color: teal;
 }
 
 /* This will apply only to cursor */

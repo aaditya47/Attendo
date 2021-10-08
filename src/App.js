@@ -24,6 +24,7 @@ import AttendanceUpdate from './pages/AttendanceUpdate';
 import LeaveApprove from './pages/LeaveApprove';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
+import './theme/loginSelector.css';
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
             <ColorModeSwitcher justifySelf="flex-end" />
             <VStack spacing={8}>
               <Switch>
-                <Route exact path="/" component={LoginSelector} />
+                <Route exact path="/" component={LoginSelector}/>
                 <Route exact path="/studentlogin" component={StudentLogin} />
                 <Route exact path="/teacherlogin" component={TeacherLogin} />
                 <Route exact path="/signup" component={Signup} />

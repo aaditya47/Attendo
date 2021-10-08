@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState} from 'react';
 import {
     Flex,
     Box,
@@ -13,7 +13,22 @@ import {
 } from '@chakra-ui/react';
 import studentLogin from '../assets/studentLogin.svg'
 
+
 export default function StudentLogin() {
+    const onSubmit=(RollNo,password)=>{
+        if(RollNo && password){
+            //pass
+            setAllow(true);
+
+        }
+    else{
+        alert("Please enter the credentials");
+    }}
+
+    const [RollNo,setRollNo] = useState('');
+    const [password,setPassword] = useState('');
+    const  [allow , setAllow] =useState(false)
+
     return (
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         <Flex width="full" align="center" justify="left">
@@ -27,14 +42,14 @@ export default function StudentLogin() {
                     <form>
                         <FormControl>
                             <FormLabel>Roll Number</FormLabel>
-                            <Input type="text" placeholder="Roll Number" />
+                            <Input type="text" value={RollNo} onChange={(event)=> setRollNo(event.target.value)} placeholder="Roll Number" />
                         </FormControl>
                         <FormControl mt={6}>
                             <FormLabel>Password</FormLabel>
-                            <Input type="password" placeholder="Password" />
+                            <Input type="password"  value={password} onChange={(event)=> setPassword(event.target.value)} placeholder="Password" />
                         </FormControl>
-                        <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4}>
-                            <Link href="/leaveform">
+                        <Button colorScheme="teal" variant="outline" width="full" mt={4}  onClick={()=>onSubmit(RollNo,password)}>
+                            <Link href={allow?'/leaveform':'#'}>
                                 Sign In
                             </Link>
                         </Button>
@@ -48,7 +63,7 @@ export default function StudentLogin() {
             </Box>
         </Flex>
         <Box boxSize="sm" mt={10}>
-            <Image src={studentLogin} alt="Segun Adebayo" />
+            <Image src={studentLogin} alt="image" />
         </Box>
         </Grid>
     );

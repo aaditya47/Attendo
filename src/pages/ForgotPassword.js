@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState} from 'react';
 import {
     Flex,
     Box,
@@ -15,6 +15,23 @@ import {
 import forgotPassword from '../assets/forgotPassword.svg'
 
 export default function ForgotPassword() {
+    const checkEmail=(email)=>{
+        var regexp = /\S+@\S+\.\S+/;
+        return regexp.test(String(email).toLowerCase());
+    }
+    
+    const onSubmit=(id,email)=>{
+        if(id && email){
+            let res = checkEmail(email)
+            if(res===false){
+                alert("Enter a valid email ID");
+            }
+        }
+    else{
+        alert("Please enter the details");
+    }}
+    const [id,setID] = useState('');
+    const [email,setEmail] = useState('');
     return (
         <Grid templateColumns="repeat(2, 1fr)" gap={10}>
         <Flex width="full" align="center" justify="left">
@@ -28,13 +45,13 @@ export default function ForgotPassword() {
                     <form>
                         <FormControl  mt={6}>
                             <FormLabel>Roll Number</FormLabel>
-                            <Input type="text" placeholder="Roll Number" />
+                            <Input type="text"  value={id} onChange={(event)=>{setID(event.target.value)}}  placeholder="Roll Number" />
                         </FormControl>
                         <FormControl  mt={6}>
                             <FormLabel>Email ID</FormLabel>
-                            <Input type="text" placeholder="Email ID" />
+                            <Input type="text" placeholder="Email ID" value={email} onChange={(event)=>{setEmail(event.target.value)}} />
                         </FormControl>
-                        <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4}>
+                        <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>{onSubmit(id,email)}}>
                             <Link href="#">
                                 Get Password
                             </Link>

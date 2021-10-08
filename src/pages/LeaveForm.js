@@ -17,10 +17,39 @@ import { SingleDatepicker } from 'chakra-dayzed-datepicker';
 import NavStudent from '../components/NavStudent'
 import Profile from '../components/Profile';
 
+
 export default function LeaveForm() {
+
+    const checkCurrDate = (dosFunc, doeFunc, aliasFunc) => {
+        var today = new Date().toDateString();
+        var newDos = new Date(dosFunc).toDateString();
+        var newDoe = new Date(doeFunc).toDateString();
+        console.log(aliasFunc,today,newDoe,newDos)
+        if (aliasFunc && ((today < newDos && today > newDoe) || (today > newDoe && today < newDos))) {
+            return false
+        }
+        else if (!aliasFunc && newDos < today) {
+            return false
+        }
+        else if (newDos > newDoe) {
+            return false
+        }
+        return true
+    }
+    const onSubmit=(dos,doe,haveAlias,reason)=>{
+        if(dos && doe && reason!==''){
+            let res = checkCurrDate(dos, doe, haveAlias)
+            if(res===false){
+                alert("Check your Dates")}
+        }
+        else{
+            alert("Fill out all the details")
+        }
+    }
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [isDoc, setIsDoc] = useState(false)
+    const [reason,setReason] = useState('')
     return (
         <VStack spacing={5}>
             <Box style={{ position: "absolute", top: 5, left: 5 }}>
@@ -50,7 +79,7 @@ export default function LeaveForm() {
                             </HStack>
                             <FormControl mt={6}>
                                 <FormLabel>Reason of leave</FormLabel>
-                                <Input type="text" placeholder="State the reason of leave" />
+                                <Input type="text" value={reason} onChange={(event)=>{setReason(event.target.value)}} placeholder="State the reason of leave" />
                             </FormControl>
                             <FormControl mt={6}>
                                 <Checkbox value={isDoc} onChange={() => setIsDoc(!isDoc)}>Supporting Document?</Checkbox>
@@ -58,7 +87,7 @@ export default function LeaveForm() {
                             {isDoc ? <FormControl mt={6}>
                                 <Input placeholder="Shareable google doc" />
                             </FormControl> : null}
-                            <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4}>
+                            <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>onSubmit(startDate,endDate,isDoc,reason)}>
                                 Submit Form
                             </Button>
                         </form>

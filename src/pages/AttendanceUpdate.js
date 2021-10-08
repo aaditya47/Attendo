@@ -134,4 +134,3 @@ export default function AttendanceUpdate() {
         </VStack>
     );
 }
-/* setFilter(event.target.value) */

@@ -1,0 +1,5 @@
+/* This will apply only to cursor */
+.bg {
+  background-image: url('../assets/loginBackground.svg');
+  background-size: cover;
+}
