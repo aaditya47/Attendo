@@ -5,7 +5,7 @@ import {
     Box,
     Heading,
     Select,
-    Switch,
+    Checkbox,
     Text,
     Grid
 } from "@chakra-ui/react";
@@ -76,7 +76,7 @@ export default function StudentDashboard() {
                     <Text color="gray.500">
                         Semester Wise Attendance ?
                     </Text>
-                    <Switch id="attendanceSummary" value={subjectWise} onChange={() => { setSubjectWise(!subjectWise) }} />
+                    <Checkbox id="attendanceSummary" value={subjectWise} onChange={() => { setSubjectWise(!subjectWise) }} />
                     {subjectWise ? <Select variant="filled" value={filter}
                         onChange={(event) => { setFilter(event.target.value) }} placeholder="Select option">
                         <option value="1">Semester 1</option>

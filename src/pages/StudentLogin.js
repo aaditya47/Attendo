@@ -10,11 +10,13 @@ import {
     Button,
     Grid,
     Image,
+    useToast
 } from '@chakra-ui/react';
 import studentLogin from '../assets/studentLogin.svg'
 
 
 export default function StudentLogin() {
+    const toast = useToast()
     const onSubmit=(RollNo,password)=>{
         if(RollNo && password){
             //pass
@@ -22,7 +24,16 @@ export default function StudentLogin() {
 
         }
     else{
-        alert("Please enter the credentials");
+        toast({
+            position: 'top',
+            title: "Login Error",
+            description: "Please enter the complete credentials",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          })
+        //alert("Please enter the credentials");
+
     }}
 
     const [RollNo,setRollNo] = useState('');
@@ -53,9 +64,9 @@ export default function StudentLogin() {
                                 Sign In
                             </Link>
                         </Button>
-                        </form>
-                    </Box>
+                    </form>
                 </Box>
+            </Box>
         </Flex>
         <Box boxSize="sm" mt={10}>
             <Image src={studentLogin} alt="image" />

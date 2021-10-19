@@ -10,6 +10,7 @@ import {
   VStack,
   Grid,
   theme,
+  Image
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
@@ -25,15 +26,16 @@ import LeaveApprove from './pages/LeaveApprove';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
 import './theme/loginSelector.css';
+import wave from './assets/wave.svg';
 
 function App() {
   return (
-    <Router>
-      <ChakraProvider theme={theme}>
-        <Box textAlign="center" fontSize="xl">
-          <Grid minH="100vh" p={3}>
-            <ColorModeSwitcher justifySelf="flex-end" />
-            <VStack spacing={8}>
+    <ChakraProvider theme={theme}>
+    <Box textAlign="center" fontSize="xl">
+      <Grid minH="100vh" pl={1} pr={1} pt={1}>
+        <ColorModeSwitcher justifySelf="flex-end"/>
+        <VStack spacing={8}>
+      <Router>
               <Switch>
                 <Route exact path="/" component={LoginSelector}/>
                 <Route exact path="/studentlogin" component={StudentLogin} />
@@ -47,11 +49,12 @@ function App() {
                 <Route exact path="/leaveapprove" component={LeaveApprove} />
                 <Route exact path="/forgotpassword" component={ForgotPassword} />
               </Switch>
-            </VStack>
-          </Grid>
-        </Box>
-      </ChakraProvider>
     </Router>
+    </VStack>
+    <Image pt={1} alignSelf="flex-end" src={wave} alt="image" />
+          </Grid>
+    </Box>
+    </ChakraProvider>
   );
 }
 

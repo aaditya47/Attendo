@@ -9,12 +9,14 @@ import {
     Link,
     Button,
     Grid,
-    Image
+    Image,
+    useToast
 } from '@chakra-ui/react';
 
 import teacherLogin from '../assets/teacherLogin.svg'
 
 export default function TeacherLogin() {
+    const toast = useToast()
     const onSubmit=(ID,password)=>{
         if(ID && password){
             //pass
@@ -22,7 +24,16 @@ export default function TeacherLogin() {
 
         }
     else{
-        alert("Please enter the credentials");
+        toast({
+            position: 'top',
+            title: "Login Error",
+            description: "Please enter the complete credentials",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          })
+        //alert("Please enter the credentials");
+
     }}
 
     const [facultyId,setID] = useState('');

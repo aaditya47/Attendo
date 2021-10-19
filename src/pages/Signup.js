@@ -8,10 +8,11 @@ import {
     Input,
     Link,
     Button,
-    Switch,
+    Checkbox,
     HStack,
     Grid,
-    Image
+    Image,
+    useToast
 } from '@chakra-ui/react';
 
 import signUp from '../assets/signUp.svg'
@@ -22,21 +23,44 @@ const checkEmail=(email)=>{
 }
 
 export default function Signup() {
+    const toast = useToast()
     const onSubmit=(stud,id,email,mobile,password)=>{
         if(id && email && mobile && password){
             let res = checkEmail(email)
             if(res===false){
-                alert("Enter a valid email ID");
+                toast({
+                    position: 'top',
+                    title: "SignUp Error",
+                    description: "Enter a Valid Email ID",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  })
             }
             if(mobile.toString().length!==10){
-                alert("Enter a valid Mobile Number");
+                toast({
+                    position: 'top',
+                    title: "SignUp Error",
+                    description: "Enter a Valid Mobile Number",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  })
             }
             if(password.length<8){
                 alert("Please enter a password with atleast 8 characters")
             }
         }
     else{
-        alert("Please enter the details");
+        //alert("Please enter the details");
+        toast({
+            position: 'top',
+            title: "SignUp Error",
+            description: "Please enter the complete credentials",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          })
     }}
 
     const [id,setID] = useState('');
@@ -56,9 +80,9 @@ export default function Signup() {
                 <Box my={4} textAlign="left">
                     <form>
                         <FormControl>
-                            <HStack spacing={3}>
+                            <HStack spacing={1}>
                                 <FormLabel mt={1}>Student?</FormLabel>
-                                <Switch id="student-or-teacher" value={stud} onChange={()=>{setStud(!stud)}}/>
+                                <Checkbox id="student-or-teacher" value={stud} onChange={()=>{setStud(!stud)}}/>
                             </HStack>
                         </FormControl>
                         <FormControl  mt={4}>
@@ -81,16 +105,16 @@ export default function Signup() {
                             <Link href="#">
                                 Sign Up
                             </Link>
-                            </Button>
-                            <Button mt={4} colorScheme="teal" variant="link">
+                        </Button>
+                        <Button mt={4} colorScheme="teal" variant="link">
                                 <Link href="/">
                                     Lost your Way? Click here
                                 </Link>
-                            </Button>
-                        </form>
+                        </Button>
+                     </form>
                     </Box>
-                </Box>
-            </Flex>
+                    </Box>
+                </Flex>
             <Box boxSize="md" style={{ paddingTop: "35%" }}>
                 <Image src={signUp} />
             </Box>

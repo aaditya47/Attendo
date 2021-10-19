@@ -9,12 +9,14 @@ import {
     Link,
     Button,
     Grid,
-    Image
+    Image,
+    useToast
 } from '@chakra-ui/react';
 
 import forgotPassword from '../assets/forgotPassword.svg'
 
 export default function ForgotPassword() {
+    const toast=useToast()
     const checkEmail=(email)=>{
         var regexp = /\S+@\S+\.\S+/;
         return regexp.test(String(email).toLowerCase());
@@ -24,11 +26,25 @@ export default function ForgotPassword() {
         if(id && email){
             let res = checkEmail(email)
             if(res===false){
-                alert("Enter a valid email ID");
+                toast({
+                    position: 'top',
+                    title: "Forgot Password Error",
+                    description: "Enter a Valid Email ID",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  })   
             }
         }
     else{
-        alert("Please enter the details");
+        toast({
+            position: 'top',
+            title: "Forgot Password Error",
+            description: "Enter the complete credentials",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          })
     }}
     const [id,setID] = useState('');
     const [email,setEmail] = useState('');

@@ -9,7 +9,8 @@ import {
     Button,
     HStack,
     Checkbox,
-    VStack
+    VStack,
+    useToast
 } from '@chakra-ui/react';
 
 // todo: work on file input button
@@ -19,7 +20,7 @@ import Profile from '../components/Profile';
 
 
 export default function LeaveForm() {
-
+    const toast= useToast()
     const checkCurrDate = (dosFunc, doeFunc, aliasFunc) => {
         var today = new Date().toDateString();
         var newDos = new Date(dosFunc).toDateString();
@@ -40,11 +41,26 @@ export default function LeaveForm() {
         if(dos && doe && reason!==''){
             let res = checkCurrDate(dos, doe, haveAlias)
             if(res===false){
-                alert("Check your Dates")}
+                toast({
+                    position: 'top',
+                    title: "Form Error",
+                    description: "Please re-check the dates",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  })
+            }
         }
         else{
-            alert("Fill out all the details")
-        }
+            toast({
+                position: 'top',
+                title: "Form Error",
+                description: "Enter the complete details",
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              })
+        }   
     }
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
