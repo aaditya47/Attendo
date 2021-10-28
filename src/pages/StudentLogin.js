@@ -14,7 +14,6 @@ import {
 } from '@chakra-ui/react';
 import studentLogin from '../assets/studentLogin.svg'
 
-
 export default function StudentLogin() {
     const toast = useToast()
     const onSubmit = (RollNo, password) => {
