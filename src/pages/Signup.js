@@ -35,7 +35,7 @@ const checkEmail = (email) => {
 
 const checkId=(id,stud)=>{
     if(stud===true){
-        var regexpStud = /['S']+[0-9]+[0-9]+[0-9]/;
+        var regexpStud = /['S']/;
         return regexpStud.test(String(id));
     }
     else{
@@ -72,7 +72,7 @@ export default function Signup() {
                     isClosable: true,
                 })
             }
-            if (!checkNumber(mobile.toString())) {
+            if (!checkNumber(mobile.toString()) || !(mobile.toString().length===10)) {
                 toast({
                     position: 'top',
                     title: "Signup Error",
