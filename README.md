@@ -14,15 +14,11 @@ A scalable and responsive web app designed to help students keep track of their 
 
 #### Back-end:
 
-- Nest JS
+- Spring Boot
 
 #### Database:
 
 - MongoDB
-
-#### API:
-
-- GraphQL
 
 ## 📷 Screenshots
 
