@@ -10,7 +10,9 @@ import {
     Button,
     Grid,
     Image,
-    useToast
+    useToast,
+    VStack,
+    HStack
 } from '@chakra-ui/react';
 
 import teacherLogin from '../assets/teacherLogin.svg'
@@ -21,7 +23,6 @@ export default function TeacherLogin() {
         if(ID && password){
             //pass
             setAllow(true);
-
         }
     else{
         toast({
@@ -64,6 +65,29 @@ export default function TeacherLogin() {
                                 Sign In
                             </Link>
                         </Button>
+                        <VStack>
+                        <Button mt={4} colorScheme="teal" variant="ghost">
+                                <Link href="/">
+                                    Return to Home Page
+                                </Link>
+                        </Button>
+                        <HStack>
+                        <Box my={4} textAlign="center">
+                        <Button colorScheme="teal" variant="ghost">
+                            <Link href="/signup">
+                                New Around here?
+                            </Link>
+                        </Button>
+                    </Box>
+                    <Box my={4} textAlign="center">
+                        <Button colorScheme="teal" variant="ghost">
+                            <Link href="/forgotpassword">
+                                Forgot Password?
+                            </Link>
+                        </Button>
+                    </Box>
+                    </HStack>
+                    </VStack>
                         </form>
                     </Box>
                 </Box>

@@ -43,20 +43,6 @@ export default function LoginSelector() {
                             </Link>
                         </Button>
                     </Box>
-                    <Box my={4} textAlign="center">
-                        <Button colorScheme="teal" variant="ghost">
-                            <Link href="/signup">
-                                New Around here?
-                            </Link>
-                        </Button>
-                    </Box>
-                    <Box my={4} textAlign="center">
-                        <Button colorScheme="teal" variant="ghost">
-                            <Link href="/forgotpassword">
-                                Forgot Password?
-                            </Link>
-                        </Button>
-                    </Box>
                 </Box>
             </VStack>
         </Flex>
