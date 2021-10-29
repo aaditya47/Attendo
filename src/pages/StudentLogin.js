@@ -1,4 +1,4 @@
-import {React,useState} from 'react';
+import { React, useState } from 'react';
 import {
     Flex,
     Box,
@@ -12,35 +12,38 @@ import {
     Image,
     useToast,
     HStack,
-    VStack
+    VStack,
+    InputGroup,
+    InputRightElement
 } from '@chakra-ui/react';
 import studentLogin from '../assets/studentLogin.svg'
 
-
 export default function StudentLogin() {
     const toast = useToast()
-    const onSubmit=(RollNo,password)=>{
-        if(RollNo && password){
+    const onSubmit = (RollNo, password) => {
+        if (RollNo && password) {
             //pass
             setAllow(true);
 
         }
-    else{
-        toast({
-            position: 'top',
-            title: "Login Error",
-            description: "Please enter the complete credentials",
-            status: "error",
-            duration: 9000,
-            isClosable: true,
-          })
-        //alert("Please enter the credentials");
+        else {
+            toast({
+                position: 'top',
+                title: "Login Error",
+                description: "Please enter the complete credentials",
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+            })
+            //alert("Please enter the credentials");
 
-    }}
-
-    const [RollNo,setRollNo] = useState('');
-    const [password,setPassword] = useState('');
-    const  [allow , setAllow] =useState(false)
+        }
+    }
+    const handleClick = () => setShow(!show)
+    const [show, setShow] = useState(false)
+    const [RollNo, setRollNo] = useState('');
+    const [password, setPassword] = useState('');
+    const [allow, setAllow] = useState(false)
 
     return (
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
@@ -57,9 +60,16 @@ export default function StudentLogin() {
                             <FormLabel>Roll Number</FormLabel>
                             <Input type="text" value={RollNo} onChange={(event)=> setRollNo(event.target.value)} placeholder="Roll Number" />
                         </FormControl>
-                        <FormControl mt={6}>
+                        <FormControl mt={4}>
                             <FormLabel>Password</FormLabel>
-                            <Input type="password"  value={password} onChange={(event)=> setPassword(event.target.value)} placeholder="Password" />
+                            <InputGroup>
+                                <Input type={show ? "text" : "password"} placeholder="Password" value={password} onChange={(event) => {setPassword(event.target.value) }} />
+                            <InputRightElement width="4.5rem">
+                                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                                {show ? "Hide" : "Show"}
+                                </Button>
+                            </InputRightElement>
+                            </InputGroup>
                         </FormControl>
                         <Button colorScheme="teal" variant="outline" width="full" mt={4}  onClick={()=>onSubmit(RollNo,password)}>
                             <Link href={allow?'/leaveform':'#'}>
@@ -91,11 +101,11 @@ export default function StudentLogin() {
                     </VStack>
                     </form>
                 </Box>
+                </Box>
+            </Flex>
+            <Box boxSize="sm" mt={10}>
+                <Image src={studentLogin} alt="image" />
             </Box>
-        </Flex>
-        <Box boxSize="sm" mt={10}>
-            <Image src={studentLogin} alt="image" />
-        </Box>
         </Grid>
     );
 }

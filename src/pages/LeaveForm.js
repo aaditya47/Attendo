@@ -22,9 +22,9 @@ import Profile from '../components/Profile';
 export default function LeaveForm() {
     const toast= useToast()
     const checkCurrDate = (dosFunc, doeFunc, aliasFunc) => {
-        var today = new Date().toDateString();
-        var newDos = new Date(dosFunc).toDateString();
-        var newDoe = new Date(doeFunc).toDateString();
+        var today = new Date().setHours(0,0,0,0);
+        var newDos = new Date(dosFunc).setHours(0,0,0,0);
+        var newDoe = new Date(doeFunc).setHours(0,0,0,0);
         console.log(aliasFunc,today,newDoe,newDos)
         if (aliasFunc && ((today < newDos && today > newDoe) || (today > newDoe && today < newDos))) {
             return false

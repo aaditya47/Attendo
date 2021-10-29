@@ -12,7 +12,9 @@ import {
     Image,
     useToast,
     VStack,
-    HStack
+    HStack,
+    InputGroup,
+    InputRightElement
 } from '@chakra-ui/react';
 
 import teacherLogin from '../assets/teacherLogin.svg'
@@ -36,7 +38,8 @@ export default function TeacherLogin() {
         //alert("Please enter the credentials");
 
     }}
-
+    const handleClick = () => setShow(!show)
+    const [show, setShow] = useState(false)
     const [facultyId,setID] = useState('');
     const [password,setPassword] = useState('');
     const  [allow , setAllow] =useState(false)
@@ -56,9 +59,16 @@ export default function TeacherLogin() {
                             <FormLabel>Faculty ID</FormLabel>
                             <Input type="text"  value={facultyId} onChange={(event)=> setID(event.target.value)} placeholder="Faculty ID" />
                         </FormControl>
-                        <FormControl mt={6}>
+                        <FormControl mt={4}>
                             <FormLabel>Password</FormLabel>
-                            <Input type="password" value={password} onChange={(event)=> setPassword(event.target.value)} placeholder="Password" />
+                            <InputGroup>
+                                <Input type={show ? "text" : "password"} placeholder="Password" value={password} onChange={(event) => {setPassword(event.target.value) }} />
+                            <InputRightElement width="4.5rem">
+                                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                                {show ? "Hide" : "Show"}
+                                </Button>
+                            </InputRightElement>
+                            </InputGroup>
                         </FormControl>
                         <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>{onSubmit(facultyId,password)}}>
                             <Link href={allow?"/teachertimetable":'#'}>

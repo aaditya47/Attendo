@@ -13,7 +13,8 @@ import {
     Th,
     Td,
     Checkbox,
-    Heading
+    Heading,
+    Grid
 } from '@chakra-ui/react';
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
 import NavTeacher from '../components/NavTeacher';
@@ -65,15 +66,16 @@ export default function AttendanceUpdate() {
                 <Box style={{ position: "absolute", top: 5, left: 5 }}>
                     <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'} />
                 </Box>
+                <VStack spacing={5}>
                 <Box align="center">
                     <NavTeacher />
                 </Box>
-                <Box textAlign="center" my={5}>
+                <Box textAlign="center">
                     <Heading>
                         Update attendance here!
                     </Heading>
                 </Box>
-                <HStack spacing="50px" mb={5}>
+                <Grid templateColumns="repeat(5, 2fr)" gap={10} m={5}>
                     <Text>Choose Year</Text>
                     <Select variant="filled" value={filter}
                         onChange={(event) => {
@@ -86,7 +88,7 @@ export default function AttendanceUpdate() {
                         <option value="3">3rd Year</option>
                         <option value="4">4th Year</option>
                     </Select>
-                    <Button type="submit" onClick={() => setSubmit(true)} colorScheme="teal" variant="outline" width="30%">
+                    <Button type="submit" onClick={() => setSubmit(true)} colorScheme="teal" variant="outline" width="contain">
                         Proceed
                     </Button>
                     {
@@ -102,7 +104,8 @@ export default function AttendanceUpdate() {
                             </HStack>
                             : null
                     }
-                </HStack>
+                </Grid>
+                </VStack>
             </Box>
             {filterSubject ?
                 <Table variant="striped" colorScheme="teal" mb={5}>

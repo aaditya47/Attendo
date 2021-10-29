@@ -8,19 +8,23 @@ import {
     Link,
     Button,
     VStack,
+    Grid,
+    Image
 } from '@chakra-ui/react';
 import Typist from 'react-text-typist';
 import '../theme/Typist.css';
 import '../theme/loginSelector.css'
+import login from '../assets/loginselector.svg'
 
 export default function LoginSelector() {
     return (
+        <Grid templateColumns="repeat(2, 3fr)" gap={10}>
         <Flex width="full" align="center" justify="center">
             <VStack >
             <Box style={{position:"relative"}}>
             <Typist style={{'font-size':'2em','font-weight':'bold'}}className={'myTypist'} cursorClassName={'myCursor'} sentences={['Attendo 📜', 'Attendance Made Easy 🗓']} loop={false} />
             </Box>
-            <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8}>
+            <Box p={8} maxWidth="500px">
                 <Box textAlign="center">
                     <Heading>
                         Welcome!
@@ -46,5 +50,9 @@ export default function LoginSelector() {
                 </Box>
             </VStack>
         </Flex>
+        <Box boxSize="md" style={{ paddingTop: "20%" }}>
+                <Image src={login} />
+            </Box>
+        </Grid>
     );
 }
