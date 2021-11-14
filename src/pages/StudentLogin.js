@@ -103,14 +103,14 @@ export default function StudentLogin() {
                                     <Box my={4} textAlign="center">
                                         <Button colorScheme="teal" variant="ghost">
                                             <Link href="/signup">
-                                                New Around here?
+                                                New around here?
                                             </Link>
                                         </Button>
                                     </Box>
                                     <Box my={4} textAlign="center">
                                         <Button colorScheme="teal" variant="ghost">
                                             <Link href="/forgotpassword">
-                                                Forgot Password?
+                                                Forgot password?
                                             </Link>
                                         </Button>
                                     </Box>
