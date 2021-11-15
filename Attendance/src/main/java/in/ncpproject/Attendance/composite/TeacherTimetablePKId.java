@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class TeacherTimetablePKId implements Serializable{
-	
+public class TeacherTimetablePKId implements Serializable {
+
 	private String TId;
 
 	private String Day;

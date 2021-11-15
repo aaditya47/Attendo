@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class PastLeavesPKId implements Serializable{
+public class PastLeavesPKId implements Serializable {
 	private String StudentId;
 	private Date DOS;
 }
