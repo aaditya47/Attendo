@@ -80,7 +80,7 @@ export default function StudentDashboard() {
                     {subjectWise ? <Select variant="filled" value={filter}
                         onChange={(event) => { setFilter(event.target.value) }} placeholder="Select option">
                         <option value="1">Semester 1</option>
-                        <option value="2" >Semester 2</option>
+                        <option value="2">Semester 2</option>
                         <option value="3">Semester 3</option>
                         <option value="4">Semester 4</option>
                         <option value="5">Semester 5</option>

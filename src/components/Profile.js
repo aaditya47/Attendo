@@ -27,7 +27,7 @@ export default function Profile(props) {
     labels: ['Jan', 'Feb', 'Mar', 'Apr'],
     datasets: [
       {
-        label: 'Average Attendance Trend',
+        label: 'Average attendance trend',
         data: [75, 80, 82, 85],
         borderColor: 'rgb(75, 192, 192)'
       }
@@ -87,7 +87,7 @@ export default function Profile(props) {
                     </StatHelpText>
                   </Stat>
                   <Stat>
-                    <StatLabel>Attendance Summary</StatLabel>
+                    <StatLabel>Attendance summary</StatLabel>
                     <Line data={data} />
                   </Stat>
                 </StatGroup> : null}

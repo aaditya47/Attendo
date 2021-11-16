@@ -67,44 +67,44 @@ export default function AttendanceUpdate() {
                     <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'} />
                 </Box>
                 <VStack spacing={5}>
-                <Box align="center">
-                    <NavTeacher />
-                </Box>
-                <Box textAlign="center">
-                    <Heading>
-                        Update attendance here!
-                    </Heading>
-                </Box>
-                <Grid templateColumns="repeat(5, 2fr)" gap={10} m={5}>
-                    <Text>Choose Year</Text>
-                    <Select variant="filled" value={filter}
-                        onChange={(event) => {
-                            setFilter(event.target.value)
-                            setSubmit(false)
-                            setFilterSubject(null)
-                        }} placeholder="Select option">
-                        <option value="1">1st Year</option>
-                        <option value="2" >2nd Year</option>
-                        <option value="3">3rd Year</option>
-                        <option value="4">4th Year</option>
-                    </Select>
-                    <Button type="submit" onClick={() => setSubmit(true)} colorScheme="teal" variant="outline" width="contain">
-                        Proceed
-                    </Button>
-                    {
-                        filter && submit ?
-                            <HStack spacing="50px">
-                                <Select variant="filled" value={filterSubject} width="full"
-                                    onChange={(event) => { setFilterSubject(event.target.value) }} placeholder="Select option">
-                                    {subjects.filter((el) => { return filter === el.Year }).map((item) => {
-                                        return (<option>{item.subject}</option>)
-                                    })}
-                                </Select>
-                                <SingleDatepicker name="date-input" date={startDate} width="full" onDateChange={setStartDate} />
-                            </HStack>
-                            : null
-                    }
-                </Grid>
+                    <Box align="center">
+                        <NavTeacher />
+                    </Box>
+                    <Box textAlign="center">
+                        <Heading>
+                            Update attendance here!
+                        </Heading>
+                    </Box>
+                    <Grid templateColumns="repeat(5, 2fr)" gap={10} m={5}>
+                        <Text>Choose Year</Text>
+                        <Select variant="filled" value={filter}
+                            onChange={(event) => {
+                                setFilter(event.target.value)
+                                setSubmit(false)
+                                setFilterSubject(null)
+                            }} placeholder="Select option">
+                            <option value="1">1st year</option>
+                            <option value="2" >2nd year</option>
+                            <option value="3">3rd year</option>
+                            <option value="4">4th year</option>
+                        </Select>
+                        <Button type="submit" onClick={() => setSubmit(true)} colorScheme="teal" variant="outline" width="contain">
+                            Proceed
+                        </Button>
+                        {
+                            filter && submit ?
+                                <HStack spacing="50px">
+                                    <Select variant="filled" value={filterSubject} width="full"
+                                        onChange={(event) => { setFilterSubject(event.target.value) }} placeholder="Select option">
+                                        {subjects.filter((el) => { return filter === el.Year }).map((item) => {
+                                            return (<option>{item.subject}</option>)
+                                        })}
+                                    </Select>
+                                    <SingleDatepicker name="date-input" date={startDate} width="full" onDateChange={setStartDate} />
+                                </HStack>
+                                : null
+                        }
+                    </Grid>
                 </VStack>
             </Box>
             {filterSubject ?
