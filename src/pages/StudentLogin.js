@@ -26,10 +26,10 @@ export default function StudentLogin() {
     const history = useHistory()
     const onSubmit = (RollNo, password) => {
         if (RollNo && password) {
-            axios.post(StudentLoginURI, /*TODO: fill in {json data}*/).then(
+            axios.post(StudentLoginURI, { StudentId: RollNo, Password: password }).then(
                 res => {
                     if ((res.data.status).length > 0) {
-                        history.push('/student/dashboard');
+                        history.push('/studentdashboard');
                     }
                 }
             ).catch(err => {
