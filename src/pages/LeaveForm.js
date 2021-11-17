@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
 import {
     Flex,
     Box,
@@ -10,16 +11,24 @@ import {
     HStack,
     Checkbox,
     VStack,
-    useToast
+    useToast,
+    Select
 } from '@chakra-ui/react';
 
 // todo: work on file input button
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
 import NavStudent from '../components/NavStudent'
 import Profile from '../components/Profile';
-
+import {PastLeavesURI,TeacherDetailsURI} from '../api/urls'
 
 export default function LeaveForm() {
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    const [isDoc, setIsDoc] = useState(false)
+    const [reason,setReason] = useState('')
+    const [certLink ,setcertLink] = useState('');
+     const[teachers,setTeachers]=useState(null);
+    const [filterTeacher, setFilterTeacher] = useState(null)
     const toast= useToast()
     const checkCurrDate = (dosFunc, doeFunc, aliasFunc) => {
         var today = new Date().setHours(0,0,0,0);
@@ -37,8 +46,24 @@ export default function LeaveForm() {
         }
         return true
     }
-    const onSubmit=(dos,doe,haveAlias,reason)=>{
-        if(dos && doe && reason!==''){
+    useEffect(() => { getTeacherList() },[]);
+    const getTeacherList = () => {
+        axios.get(TeacherDetailsURI).then(res => {
+            if (res.status===200) { 
+                console.log(res);
+                setTeachers(res.data) }
+            else {
+                setTeachers([{ TeacherId: "Choose" }])
+            }
+        }).catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Fetching teacher details',
+            })
+        })
+    }
+    const onSubmit=(dos,doe,haveAlias,reason,certLink,filterTeacher)=>{
+        if(dos && doe && reason!=='' && filterTeacher!=="Choose"){
             let res = checkCurrDate(dos, doe, haveAlias)
             if(res===false){
                 toast({
@@ -50,6 +75,45 @@ export default function LeaveForm() {
                     isClosable: true,
                   })
             }
+            axios.post(PastLeavesURI,{ 
+            StudentId:localStorage.getItem('suserid'),
+            TeacherId:filterTeacher.split(",")[0],
+            DOS:dos,
+            DOE:doe,
+            Reason:reason,
+            Approval:"Pending",
+            CertLink:certLink}).then(res => {;
+                if ((res.status)===200) {
+                    if(res.data!=='Already Present Leave Form'){
+                        toast({
+                            title: 'Leave Applied Successfully',
+                            status: 'success',
+                            duration: 9000,
+                            isClosable: true
+                        })
+                    }
+                    else{
+                        toast({
+                            title: 'Leave Request Already Present',
+                            status: 'warning',
+                            duration: 9000,
+                            isClosable: true
+                        })
+                    }
+                           
+                }
+            }
+        ).catch(err => {
+            toast({
+                title: 'Login Error',
+                description: 'Error applying for leave please check your details again',
+                status: 'error',
+                duration: 9000,
+                isClosable: true
+            })
+        }
+        )
+
         }
         else{
             toast({
@@ -62,10 +126,6 @@ export default function LeaveForm() {
               })
         }   
     }
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
-    const [isDoc, setIsDoc] = useState(false)
-    const [reason,setReason] = useState('')
     return (
         <VStack spacing={5}>
             <Box style={{ position: "absolute", top: 5, left: 5 }}>
@@ -94,6 +154,14 @@ export default function LeaveForm() {
                                 </FormControl>
                             </HStack>
                             <FormControl mt={6}>
+                            <Select variant="filled" value={filterTeacher} width="full"
+                                    onChange={(event) => { setFilterTeacher(event.target.value) }} placeholder="Select option">
+                                    { teachers? teachers.map((item) => {
+                                        return (<option>{item.TeacherId},{item.Name}</option>)
+                                    }):null}
+                                </Select>
+                            </FormControl>
+                            <FormControl mt={6}>
                                 <FormLabel>Reason of leave</FormLabel>
                                 <Input type="text" value={reason} onChange={(event)=>{setReason(event.target.value)}} placeholder="State the reason of leave" />
                             </FormControl>
@@ -101,9 +169,9 @@ export default function LeaveForm() {
                                 <Checkbox value={isDoc} onChange={() => setIsDoc(!isDoc)}>Supporting Document?</Checkbox>
                             </FormControl>
                             {isDoc ? <FormControl mt={6}>
-                                <Input placeholder="Shareable google doc" />
+                                <Input placeholder="Shareable google doc" value={certLink} onChange={(event) => setcertLink(event.target.value)}/>
                             </FormControl> : null}
-                            <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>onSubmit(startDate,endDate,isDoc,reason)}>
+                            <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>onSubmit(startDate,endDate,isDoc,reason,certLink,filterTeacher)}>
                                 Submit Form
                             </Button>
                         </form>

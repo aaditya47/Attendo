@@ -1,4 +1,5 @@
 import {React,useState} from 'react';
+import axios from 'axios';
 import {
     Flex,
     Box,
@@ -14,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 import forgotPassword from '../assets/forgotPassword.svg'
+import { ForgotPasswordURI } from '../api/urls';
 
 export default function ForgotPassword() {
     const toast=useToast()
@@ -35,6 +37,27 @@ export default function ForgotPassword() {
                     isClosable: true,
                   })   
             }
+        axios.post(ForgotPasswordURI,{GId:id,emailId:email}).then(res => {
+                if((res.status)===200) {
+                    toast({
+                        title: 'Password',
+                        description: 'Password Sent to Registered Mail',
+                        status: 'success',
+                        duration: 9000,
+                        isClosable: true
+                    })
+                }
+            }
+        ).catch(err => {
+            toast({
+                title: 'Error',
+                description: 'Invalid credentials!',
+                status: 'error',
+                duration: 9000,
+                isClosable: true
+            })
+        }
+        )
         }
     else{
         toast({
@@ -68,9 +91,7 @@ export default function ForgotPassword() {
                             <Input type="text" placeholder="Email ID" value={email} onChange={(event)=>{setEmail(event.target.value)}} />
                         </FormControl>
                         <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>{onSubmit(id,email)}}>
-                            <Link href="#">
                                 Get Password
-                            </Link>
                         </Button>
                         <Button mt={4} colorScheme="teal" variant="link">
                         <Link href="/">

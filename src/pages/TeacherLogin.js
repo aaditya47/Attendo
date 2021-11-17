@@ -1,4 +1,6 @@
 import {React,useState} from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import {
     Flex,
     Box,
@@ -17,14 +19,29 @@ import {
     InputRightElement
 } from '@chakra-ui/react';
 
+import {TeacherLoginURI} from '../api/urls'
 import teacherLogin from '../assets/teacherLogin.svg'
 
 export default function TeacherLogin() {
     const toast = useToast()
+    const history = useHistory()
     const onSubmit=(ID,password)=>{
-        if(ID && password){
-            //pass
-            setAllow(true);
+        if (ID && password) {
+            axios.post(TeacherLoginURI,{TeacherId: ID, Password: password}).then(res => {;
+                    if ((res.status)===200) {
+                        history.push('/teachertimetable');
+                    }
+                }
+            ).catch(err => {
+                toast({
+                    title: 'Login Error',
+                    description: 'Invalid credentials! Please double check your username and password!',
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true
+                })
+            }
+            )
         }
     else{
         toast({
@@ -42,7 +59,6 @@ export default function TeacherLogin() {
     const [show, setShow] = useState(false)
     const [facultyId,setID] = useState('');
     const [password,setPassword] = useState('');
-    const  [allow , setAllow] =useState(false)
 
     return (
         <Grid templateColumns="repeat(2, 1fr)" gap={8}>
@@ -71,9 +87,7 @@ export default function TeacherLogin() {
                             </InputGroup>
                         </FormControl>
                         <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>{onSubmit(facultyId,password)}}>
-                            <Link href={allow?"/teachertimetable":'#'}>
                                 Sign In
-                            </Link>
                         </Button>
                         <VStack>
                         <Button mt={4} colorScheme="teal" variant="ghost">

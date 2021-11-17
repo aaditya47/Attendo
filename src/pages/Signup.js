@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import axios from 'axios';
 import {
     Flex,
     Box,
@@ -15,11 +16,13 @@ import {
     useToast,
     Alert,
     InputGroup,
-    InputRightElement
+    InputRightElement,
+    Select
 } from '@chakra-ui/react';
 
 import signUp from '../assets/signUp.svg'
 import PasswordStrengthIndicator from "../components/PasswordStrengthIndicator";
+import { TeacherDetailsURI,StudentDetailsURI } from "../api/urls";
 
 const checkNumber = (number) => {
     const validator = /[2-9]{2}\d{8}/;
@@ -48,8 +51,9 @@ const checkId=(id,stud)=>{
 
 export default function Signup() {
     const toast = useToast()
-    const onSubmit = (stud, id, email, mobile, password,validity) => {
-        if (id && email && mobile && password) {
+    const onSubmit = (stud, id,name,desig,email, mobile, password,validity) => {
+        console.log(desig)
+        if (id && email && mobile && password && name) {
             let idCheck = checkId(id,stud);
             if(idCheck===false){
                 toast({
@@ -92,8 +96,50 @@ export default function Signup() {
                     isClosable: true,
                 })
             }
-            
-
+            if(stud===true){            
+            axios.post(StudentDetailsURI,{    
+            StudentId:id,
+            Name:name,
+            Phone:mobile,
+            Email:email,
+            Dept:"CSE",
+            Cgpa:(Math.random() * (9.8-6) + 6).toFixed(2),
+            Password:password}).then(res => {
+                if (res.status===200) { 
+                    toast({
+                        status: 'success',
+                        title: 'Sign Up Successful',
+                    })
+                    }
+            }).catch(error => {
+                toast({
+                    status: 'error',
+                    title: 'Error in Sign Up',
+                })
+            })}
+            else{
+                axios.post(TeacherDetailsURI,{
+                    TeacherId:id,
+                    Name:name,
+                    Phone:mobile,
+                    Email:email,
+                    Dept:"CSE",
+                    Desg:desig,
+                    Password:password
+                }).then(res => {
+                    if (res.status===200) { 
+                        toast({
+                            status: 'success',
+                            title: 'Sign Up Successful',
+                        })
+                    }
+                }).catch(error => {
+                    toast({
+                        status: 'error',
+                        title: 'Error in Sign Up',
+                    })
+                })
+            }
         }
         else {
             //alert("Please enter the details");
@@ -117,6 +163,8 @@ export default function Signup() {
     const [stud, setStud] = useState(false);
     const [passwordFocused, setPasswordFocused] = useState(false);
     const [show, setShow] = useState(false)
+    const[desig,setDesig]=useState('');
+    const[name,setName]=useState('');
     const [passwordValidity, setPasswordValidity] = useState({
         minChar: null,
         number: null,
@@ -130,6 +178,8 @@ export default function Signup() {
             specialChar: specialCharacterRegx.test(password) ? true : false
         });
     };
+
+
     return (
         <Grid templateColumns="repeat(2, 1fr)" gap={10}>
             <Flex width="full" align="center" justify="left">
@@ -151,6 +201,20 @@ export default function Signup() {
                                 <FormLabel>Roll Number</FormLabel>
                                 <Input type="text" placeholder="Roll Number" value={id} onChange={(event) => { setID(event.target.value) }} />
                             </FormControl>
+                            <FormControl mt={4}>
+                                <FormLabel>Name</FormLabel>
+                                <Input type="text" placeholder="Name" value={name} onChange={(event) => { setName(event.target.value) }} />
+                            </FormControl>
+                            {!stud?
+                                <FormControl mt={4}>
+                                <FormLabel>Designation</FormLabel>
+                                <Select variant="filled" value={desig} width="full"
+                                    onChange={(event) => { setDesig(event.target.value)}} placeholder="Select option">
+                                        <option value="Assistant Professor">Assistant Professor</option>
+                                        <option value="Professor">Professor</option>
+                                </Select>
+                            </FormControl>
+                            :null}
                             <FormControl mt={4}>
                                 <FormLabel>Email ID</FormLabel>
                                 <Input type="text" placeholder="Email ID" value={email} onChange={(event) => { setEmail(event.target.value) }} />
@@ -176,7 +240,7 @@ export default function Signup() {
                                             validity={passwordValidity}/>
                                     </Alert>
                                     )}
-                            <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4} onClick={() => onSubmit(stud, id, email, mobile, password,passwordValidity)}>
+                            <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4} onClick={() => onSubmit(stud, id,name,desig,email, mobile, password,passwordValidity)}>
                                 <Link href="#">
                                     Sign Up
                                 </Link>
