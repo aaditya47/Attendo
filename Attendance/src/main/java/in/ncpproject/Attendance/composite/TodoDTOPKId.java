@@ -19,14 +19,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode
 
-public class TodoDTOPKId implements Serializable{
-	
+public class TodoDTOPKId implements Serializable {
 
 	private String StudentId;
-	
 
 	private String Subject;
-	
 
 	private Date Ddate;
 }
