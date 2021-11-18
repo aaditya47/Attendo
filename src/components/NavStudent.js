@@ -21,7 +21,7 @@ export default function NavStudent() {
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-                <BreadcrumbLink href="/studentlogin">Sign out</BreadcrumbLink>
+                <BreadcrumbLink href="/studentlogin" onClick={()=>{localStorage.clear()}}>Sign out</BreadcrumbLink>
             </BreadcrumbItem>
 
         </Breadcrumb>

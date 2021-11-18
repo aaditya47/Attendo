@@ -15,8 +15,6 @@ import {
   Stat,
   StatLabel,
   StatNumber,
-  StatHelpText,
-  StatArrow,
   StatGroup
 } from "@chakra-ui/react"
 
@@ -80,11 +78,7 @@ export default function Profile(props) {
                 <StatGroup>
                   <Stat>
                     <StatLabel>CGPA</StatLabel>
-                    <StatNumber>9.61</StatNumber>
-                    <StatHelpText>
-                      <StatArrow type="increase" />
-                      1.15%
-                    </StatHelpText>
+                    <StatNumber>{localStorage.getItem('cgpa')}</StatNumber>
                   </Stat>
                   <Stat>
                     <StatLabel>Attendance summary</StatLabel>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { React, useState ,useEffect} from "react";
 import axios from 'axios';
 import {
@@ -18,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import NavStudent from '../components/NavStudent'
 import Profile from "../components/Profile";
-import { SubjectURI } from "../api/urls";
+import { SubjectListURI, SubjectURI } from "../api/urls";
 
 export default function StudentDashboard() {
     const toast=useToast();
@@ -26,9 +27,34 @@ export default function StudentDashboard() {
     const [subjectWise, setSubjectWise] = useState(false)
     const[report,setReport]=useState({});
     const[overall,setOverall]=useState([]);
+    const[subject,setSubject]=useState(null);
     useEffect(() => {
         getReport();
+        getSubjectList();
     },[])
+
+
+    const makeSubjectPair=(Slist)=>{
+        var dict = {}
+        for (var i = 0; i < Slist.length; i++) {
+                dict[Slist[i].SubjectId] = Slist[i].Subject
+        }
+        return dict
+    }
+    const getSubjectList=()=>{
+        axios.get(SubjectListURI).then(res => {
+            if (res.status===200) { 
+                setSubject(makeSubjectPair(res.data))
+             }
+        }).catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Fetching Subject details',
+                duration: 9000,
+                isClosable: true
+            })
+        })
+    }
 
     const processReport=(init)=>{
         var dict = {}
@@ -61,7 +87,7 @@ export default function StudentDashboard() {
         <Box>
             <VStack spacing={4}>
                 <Box style={{ position: "absolute", top: 5, left: 5 }}>
-                    <Profile Name={'Samyukth'} RollNo={'CB.EN.U4CSE18451'} student={true} dept={'CSE'} section={'E'} />
+                    <Profile Name={localStorage.getItem('name')} RollNo={localStorage.getItem('suserid')} student={true} dept={'CSE'} section={'E'} />
                 </Box>
                 <Box align="center">
                     <NavStudent />
@@ -76,11 +102,11 @@ export default function StudentDashboard() {
                         Subject Wise Attendance ?
                     </Text>
                     <Checkbox id="attendanceSummary" value={subjectWise} onChange={() => { setSubjectWise(!subjectWise) }} />
-                    {subjectWise? 
+                    {subjectWise && subject? 
                     <Select variant="filled" value={filter}
                         onChange={(event) => { setFilter(event.target.value) }} placeholder="Select option">
                         {Object.keys(report).map((key, index) => ( 
-                                   <option value={key}>{key}</option>
+                                   <option value={key}>{key} {subject[key]}</option>
                                    ))}</Select> 
                     : null}
                 </HStack>
@@ -89,14 +115,16 @@ export default function StudentDashboard() {
                                 <Table>
                                 <Thead>
                                 <Tr>
+                                    <Th>Subject Code</Th>
                                     <Th>Subject</Th>
                                     <Th>Attendance</Th>
                                 </Tr>
                                 </Thead>
-                               {report?Object.keys(report).map((key, index) => ( 
+                               {report && subject?Object.keys(report).map((key, index) => ( 
                                     <Tbody>
                                             <Tr>
                                                 <Td>{key}</Td>
+                                                <Td>{subject[key]}</Td>
                                                 <Td>{((report[key][0]/report[key][1])*100)}%</Td>
                                             </Tr>
                                         </Tbody>)):null}

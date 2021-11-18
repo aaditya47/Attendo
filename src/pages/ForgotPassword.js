@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import {React,useState} from 'react';
 import axios from 'axios';
-=======
-import { React, useState } from 'react';
->>>>>>> cd39e2e71372aee59dddfcd929efc4afbb4c7b03
 import {
     Flex,
     Box,
@@ -78,7 +74,6 @@ export default function ForgotPassword() {
     const [email, setEmail] = useState('');
     return (
         <Grid templateColumns="repeat(2, 1fr)" gap={10}>
-<<<<<<< HEAD
         <Flex width="full" align="center" justify="left">
             <Box p={8} borderWidth={1} borderRadius={8}>
                 <Box textAlign="center">
@@ -106,37 +101,6 @@ export default function ForgotPassword() {
                     </Button>                       
                     </form>
                 </Box>
-=======
-            <Flex width="full" align="center" justify="left">
-                <Box p={8} borderWidth={1} borderRadius={8}>
-                    <Box textAlign="center">
-                        <Heading>
-                            Forgot Password
-                        </Heading>
-                    </Box>
-                    <Box my={4} textAlign="left">
-                        <form>
-                            <FormControl mt={6}>
-                                <FormLabel>Roll Number</FormLabel>
-                                <Input type="text" value={id} onChange={(event) => { setID(event.target.value) }} placeholder="Roll Number" />
-                            </FormControl>
-                            <FormControl mt={6}>
-                                <FormLabel>Email ID</FormLabel>
-                                <Input type="text" placeholder="Email ID" value={email} onChange={(event) => { setEmail(event.target.value) }} />
-                            </FormControl>
-                            <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={() => { onSubmit(id, email) }}>
-                                <Link href="#">
-                                    Get Password
-                                </Link>
-                            </Button>
-                            <Button mt={4} colorScheme="teal" variant="link">
-                                <Link href="/">
-                                    Lost your Way? Click here
-                                </Link>
-                            </Button>
-                        </form>
-                    </Box>
->>>>>>> cd39e2e71372aee59dddfcd929efc4afbb4c7b03
                 </Box>
             </Flex>
             <Box boxSize="sm" mt={10}>

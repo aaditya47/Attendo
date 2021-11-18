@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState , useEffect} from 'react';
+import axios from 'axios';
 import {
     Flex,
     Box,
@@ -13,6 +15,8 @@ import {
     VStack,
     Alert,
     AlertIcon,
+    useToast,
+    Link
 } from "@chakra-ui/react";
 
 import {
@@ -22,44 +26,60 @@ import {
 
 import Profile from "../components/Profile";
 import NavTeacher from "../components/NavTeacher";
-
-// Todo: Handle delete button
+import { ApprovalURI, FilteredLeaveURI } from "../api/urls";
 
 export default function LeaveApprove() {
-    let leavedata = [
-        {
-            studentname: "Samyukth",
-            studentrollnumber: "CB.EN.U4CSE18451",
-            daysLeave: 2,
-            date: "2020-07-06",
-            leavetype: "Medical Leave"
-        },
-        {
-            studentname: "Swaran",
-            studentrollnumber: "CB.EN.U4CSE18461",
-            daysLeave: 2,
-            date: "2020-07-06",
-            leavetype: "Medical Leave"
-        },
-        {
-            studentname: "Shri Hari Nithin",
-            studentrollnumber: "CB.EN.U4CSE18455",
-            date: "2020-07-06",
-            daysLeave: 2,
-            leavetype: "Medical Leave"
-        },
-        {
-            studentname: "Samyukth",
-            studentrollnumber: "CB.EN.U4CSE18451",
-            date: "2020-08-06",
-            daysLeave: 2,
-            leavetype: "On Duty Leave"
-        }
-    ];
+
+    const [leave,setLeave] = useState(null);
+
+    const toast  = useToast();
+    useEffect(() => { getLeaveList()},[]);
+    const getLeaveList = () => {
+        axios.get(FilteredLeaveURI+'/'+localStorage.getItem('tuserid')).then(res => {
+            if (res.status===200) { 
+                setLeave(res.data) 
+            }
+            else{
+                setLeave(null);
+            }
+        }).catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Fetching teacher details',
+            })
+        })
+    }
+
+    const UpdateApproval=(decision,StudentId,DOS,DOE,Reason,CertLink)=>{
+        console.log(decision,StudentId,DOS,DOE,Reason,CertLink)
+        axios.put(ApprovalURI,{
+            StudentId:StudentId,
+	        TeacherId:localStorage.getItem('tuserid'),
+            DOS:new Date(DOS),
+	        DOE:new Date(DOE),
+            Reason:Reason,
+            Approval:decision,
+            CertLink:CertLink
+        }).then(res => {
+            if (res.status===200) { 
+                toast({
+                    status: 'success',
+                    title: 'Leave Status Updated',
+                })
+                getLeaveList();
+            }
+        }).catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Updating Status',
+            })
+        })
+    }
+
     return (
         <VStack spacing="50px">
             <Box style={{ position: "absolute", top: 5, left: 5 }}>
-                <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'} />
+            <Profile Name={localStorage.getItem('name')} RollNo={localStorage.getItem('tuserid')} student={false} Email={localStorage.getItem('email')} designation={localStorage.getItem('desig')+' Computer Science Engineering, School of Engineering, Coimbatore'} />
             </Box>
             <Box align="center">
                 <NavTeacher />
@@ -83,27 +103,29 @@ export default function LeaveApprove() {
                                 <Tr>
                                     <Th>Student Name</Th>
                                     <Th>Student Roll Number</Th>
-                                    <Th>Date</Th>
-                                    <Th>Days of Leave</Th>
+                                    <Th>Start Date</Th>
+                                    <Th>End Date</Th>
                                     <Th>Leave Type</Th>
+                                    <Th>CertLink</Th>
                                 </Tr>
                             </Thead>
                             { // map json objects array in leave data to table
-                                leavedata.map((data, index) => {
+                                leave? leave.map((data, index) => {
                                     return (
                                         <Tbody>
                                             <Tr>
-                                                <Td>{data.studentname}</Td>
-                                                <Td>{data.studentrollnumber}</Td>
-                                                <Td>{data.date}</Td>
-                                                <Td>{data.daysLeave}</Td>
-                                                <Td>{data.leavetype}</Td>
-                                                <Td><IconButton icon={<CheckIcon />} color="green.500" /></Td>
-                                                <Td><IconButton icon={<CloseIcon />} color="red.500" /></Td>
+                                                <Td>{data.StudentId.Name}</Td>
+                                                <Td>{data.StudentId.StudentId}</Td>
+                                                <Td>{data.DOS}</Td>
+                                                <Td>{data.DOE}</Td>
+                                                <Td>{data.Reason}</Td>
+                                                {data.CertLink?<Td><Link href={data.CertLink} isExternal>Click Here</Link></Td>:null}
+                                                <Td><IconButton icon={<CheckIcon />} color="green.500" onClick={()=>{UpdateApproval('Approved',data.StudentId.StudentId,data.DOS,data.DOE,data.Reason,data.CertLink)}}/></Td>
+                                                <Td><IconButton icon={<CloseIcon />} color="red.500" onClick={()=>{UpdateApproval('Rejected',data.StudentId.StudentId,data.DOS,data.DOE,data.Reason,data.CertLink)}}/></Td>
                                             </Tr>
                                         </Tbody>
                                     )
-                                })
+                                }):null
                             }
                         </Table>
                     </Box>

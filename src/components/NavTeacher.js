@@ -21,7 +21,7 @@ export default function NavTeacher() {
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-                <BreadcrumbLink href="/teacherlogin">Sign out</BreadcrumbLink>
+                <BreadcrumbLink href="/teacherlogin" onClick={()=>{localStorage.clear()}}>Sign out</BreadcrumbLink>
             </BreadcrumbItem>
         </Breadcrumb>
     )

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState , useEffect} from 'react';
+import axios from 'axios';
 import {
     Box,
     Button,
     HStack,
     Select,
-    Text,
     VStack,
     Table,
     Thead,
@@ -14,57 +15,148 @@ import {
     Td,
     Checkbox,
     Heading,
-    Grid
+    Grid,
+    useToast,
+    Input
 } from '@chakra-ui/react';
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
 import NavTeacher from '../components/NavTeacher';
 import Profile from '../components/Profile';
+import { StudentDetailsURI, SubjectListURI, TeacherDetailsURI , AttendanceURI} from '../api/urls';
 export default function AttendanceUpdate() {
+
+
+    const onSubmit=(attendance,hours,selectedTeacher,startDate,selectedSubject)=>{
+        if(attendance && hours && selectedTeacher && startDate && selectedSubject){
+            var response=[]
+            console.log(attendance);
+            for (var i = 0; i < student.length; i++) {
+                response.push({
+                    StudentId:student[i].StudentId,
+                    Subject:selectedSubject.split(',')[0],
+                    Ddate:startDate,
+                    TId:selectedTeacher.split(',')[1],
+                    Attendedhours:attendance[student[i].StudentId],
+                    Noofhours:hours
+                    })
+        }
+
+        axios.post(AttendanceURI,response).then(res => {
+            if (res.status===200) { 
+                toast({
+                    status: 'success',
+                    title: 'Attendance Updated Successfully',
+                    duration: 9000,
+                    isClosable: true
+                })
+                }
+        }).catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Updating Attendance',
+                duration: 9000,
+                isClosable: true
+            })
+        })
+
+        }
+    }
+
+    const toast = useToast()
+    useEffect(() => {
+        getTeachersList();
+        getSubjectList();
+        setAttendance(getStudentList());
+    }, [])
+
+    const getTeachersList=()=>{
+        axios.get(TeacherDetailsURI).then(res => {
+            if (res.status===200) { 
+                setTeachers(res.data) }
+            else {
+                setTeachers([{ TeacherId: "Choose" }])
+            }
+        }).catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Fetching teacher details',
+            })
+        })
+    }
+
+    const getSubjectList=()=>{
+        axios.get(SubjectListURI).then(res => {
+            if (res.status===200) { 
+                setSubject(res.data) }
+            else {
+                setSubject([{ Subject: "Choose" }])
+            }
+        }).catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Fetching Subject details',
+                duration: 9000,
+                isClosable: true
+            })
+        })
+    }
+
+    const attendanceUpdate=(student,val)=>{
+        var dict={}
+        for (var i = 0; i < student.length; i++) {
+            dict[student[i].StudentId]=val
+    }
+        return dict
+    }
+
+    const getStudentList=()=>{
+        var dict={}
+        axios.get(StudentDetailsURI).then(res => {
+            if (res.status===200) { 
+                setStudent(res.data) 
+                if(student){
+                        dict=attendanceUpdate(student,0);
+                }
+                }
+        })
+        .catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Fetching Students details',
+                duration: 9000,
+                isClosable: true
+            })
+        })
+        return dict;
+    }
+
+    const updateHours=(event,StudentId,hours)=>{
+            if(event.target.checked===true){
+                attendance[StudentId]=hours
+            }
+            else{
+                attendance[StudentId]=0
+            }
+    }
+
+    const AttendanceHours=(event,student)=>{
+      setHours(event.target.value)
+      setAttendance(attendanceUpdate(student,event.target.value))
+    }
+
     const [startDate, setStartDate] = useState(new Date());
-    const [filter, setFilter] = useState(null)
-    const [filterSubject, setFilterSubject] = useState(null)
-    const [submit, setSubmit] = useState(false);
-    const subjects = [
-        {
-            Year: "1",
-            subject: ['Fundamentals on computer Science']
-        },
-        {
-            Year: "2",
-            subject: ['Datastructures and Algorithm']
-        },
-        {
-            Year: "3",
-            subject: ['Networking']
-        },
-        {
-            Year: "4",
-            subject: ['Big Data Analytics']
-        }
-    ]
-    const subjectStud = [
-        {
-            Name: 'Amit',
-            Roll: 'CB.EN.U4CSE18451'
-        },
-        {
-            Name: 'Ravi',
-            Roll: 'CB.EN.U5CSE18402'
-        },
-        {
-            Name: 'Hari',
-            Roll: 'CB.EN.U4CSE18471'
-        },
-        {
-            Name: 'Aaditya',
-            Roll: 'CB.EN.U4CSE18434'
-        }
-    ]
+    const [selectedTeacher, setSelectedTeacher] = useState(null)
+    const [hours, setHours] = useState(null);
+    const [selectedSubject, setSelectedSubject] = useState(null);
+    const[teacher,setTeachers] = useState(null);
+    const[subject,setSubject] = useState(null);
+    const [student,setStudent] = useState(null);
+    const [attendance,setAttendance] = useState(null);
     return (
         <VStack>
             <Box>
                 <Box style={{ position: "absolute", top: 5, left: 5 }}>
-                    <Profile Name={'Shanmuga Priya'} RollNo={'CB.EN.TECSE17451'} student={false} Email={"ss_priya@cb.amrita.edu"} designation={'Assistant Professor, Computer Science Engineering, School of Engineering, Coimbatore'} />
+                    <Profile Name={localStorage.getItem('name')} RollNo={localStorage.getItem('tuserid')} student={false} Email={localStorage.getItem('email')} designation={localStorage.getItem('desig')+' Computer Science Engineering, School of Engineering, Coimbatore'} />
                 </Box>
                 <VStack spacing={5}>
                     <Box align="center">
@@ -75,39 +167,27 @@ export default function AttendanceUpdate() {
                             Update attendance here!
                         </Heading>
                     </Box>
-                    <Grid templateColumns="repeat(5, 2fr)" gap={10} m={5}>
-                        <Text>Choose Year</Text>
-                        <Select variant="filled" value={filter}
-                            onChange={(event) => {
-                                setFilter(event.target.value)
-                                setSubmit(false)
-                                setFilterSubject(null)
-                            }} placeholder="Select option">
-                            <option value="1">1st year</option>
-                            <option value="2" >2nd year</option>
-                            <option value="3">3rd year</option>
-                            <option value="4">4th year</option>
-                        </Select>
-                        <Button type="submit" onClick={() => setSubmit(true)} colorScheme="teal" variant="outline" width="contain">
-                            Proceed
-                        </Button>
-                        {
-                            filter && submit ?
-                                <HStack spacing="50px">
-                                    <Select variant="filled" value={filterSubject} width="full"
-                                        onChange={(event) => { setFilterSubject(event.target.value) }} placeholder="Select option">
-                                        {subjects.filter((el) => { return filter === el.Year }).map((item) => {
-                                            return (<option>{item.subject}</option>)
-                                        })}
+                    <Grid templateColumns="repeat(1, 2fr)" p={3} m={5}>
+                            <HStack spacing="50px">
+                                <Select variant="filled" value={selectedTeacher} width="full"
+                                        onChange={(event) => { setSelectedTeacher(event.target.value) }} placeholder="Select option">
+                                        {teacher?teacher.map((item) => {
+                                            return (<option>{item.Name},{item.TeacherId}</option>)
+                                        }):null}
+                                    </Select>
+                                    <Select variant="filled" value={selectedSubject} width="full"
+                                        onChange={(event) => { setSelectedSubject(event.target.value) }} placeholder="Select option">
+                                        {subject?subject.map((item) => {
+                                            return (<option>{item.SubjectId},{item.Subject}</option>)
+                                        }):null}
                                     </Select>
                                     <SingleDatepicker name="date-input" date={startDate} width="full" onDateChange={setStartDate} />
-                                </HStack>
-                                : null
-                        }
+                                    <Input placeholder="total class hours" value={hours} onChange={(event) => AttendanceHours(event,student)}/>
+                            </HStack>
                     </Grid>
                 </VStack>
             </Box>
-            {filterSubject ?
+            {student?
                 <Table variant="striped" colorScheme="teal" mb={5}>
                     <Thead>
                         <Tr>
@@ -117,20 +197,20 @@ export default function AttendanceUpdate() {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {subjectStud.map((item) => {
+                        {student.map((item) => {
                             return (
                                 <Tr>
-                                    <Td>{item.Roll}</Td>
+                                    <Td>{item.StudentId}</Td>
                                     <Td>{item.Name}</Td>
-                                    <Td><Checkbox colorScheme="green" defaultIsChecked /></Td>
+                                    <Td><Checkbox colorScheme="green" defaultIsChecked onChange={(event)=>{updateHours(event,item.StudentId,hours)}}/></Td>
                                 </Tr>
                             )
                         })}
                     </Tbody>
                 </Table>
                 : null}
-            {filterSubject ?
-                <Button type="submit" colorScheme="teal" variant="outline" >
+            {student ?
+                <Button type="submit" colorScheme="teal" variant="outline" onClick={()=>onSubmit(attendance,hours,selectedTeacher,startDate,selectedSubject)}>
                     Submit
                 </Button> : null
             }

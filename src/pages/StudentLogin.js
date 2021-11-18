@@ -31,6 +31,9 @@ export default function StudentLogin() {
             axios.post(StudentLoginURI,{StudentId: RollNo, Password: password}).then(res => {;
                     if ((res.status)===200) {
                         localStorage.setItem("suserid", RollNo);
+                        localStorage.setItem("name",res.data.Name);
+                        localStorage.setItem("dept",res.data.Dept);
+                        localStorage.setItem("cgpa",res.data.Cgpa);
                         history.push('/leaveform');
                     }
                 }

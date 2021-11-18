@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React,{useState,useEffect} from "react";
 import axios from 'axios';
 import {
@@ -21,7 +22,7 @@ import {
 
 import Profile from "../components/Profile";
 import NavStudent from "../components/NavStudent";
-import { PastLeavesURI } from "../api/urls";
+import { DeleteLeaveURI, PastLeavesURI } from "../api/urls";
 
 // Todo: Handle delete button
 
@@ -44,11 +45,31 @@ export default function PastLeaves() {
             })
         })
     }
-    
+
+    const deleteLeave=(id,DOS)=>{
+        axios.post(DeleteLeaveURI,{
+            StudentId:id,
+            DOS:new Date(DOS)
+        }).then(res => {
+            if (res.status===200) { 
+                toast({
+                    status: 'success',
+                    title: 'Deleted Successfully',
+                })
+                getLeaveData()
+                }
+        }).catch(error => {
+            toast({
+                status: 'error',
+                title: 'Error in Deleting',
+            })
+        })
+    }
+
     return (
         <VStack spacing="50px">
             <Box style={{ position: "absolute", top: 5, left: 5 }}>
-                <Profile Name={'Samyukth'} RollNo={localStorage.getItem('suserid')} student={true} dept={'CSE'} section={'E'} />
+            <Profile Name={localStorage.getItem('name')} RollNo={localStorage.getItem('suserid')} student={true} dept={'CSE'} section={'E'} />
             </Box>
             <Box align="center">
                 <NavStudent/>
@@ -80,7 +101,7 @@ export default function PastLeaves() {
                                                 <Td>{(data.DOE)}</Td>
                                                 <Td>{data.Reason}</Td>
                                                 <Td>{data.Approval}</Td>
-                                                <Td><IconButton icon={<DeleteIcon />} /></Td>
+                                                <Td><IconButton icon={<DeleteIcon />} onClick={()=>{deleteLeave(localStorage.getItem('suserid'),data.DOS)}}/></Td>
                                             </Tr>
                                         </Tbody>
                                     )

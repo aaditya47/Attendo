@@ -29,6 +29,10 @@ export default function TeacherLogin() {
         if (ID && password) {
             axios.post(TeacherLoginURI,{TeacherId: ID, Password: password}).then(res => {;
                     if ((res.status)===200) {
+                        localStorage.setItem('tuserid',res.data.TeacherId);
+                        localStorage.setItem('name',res.data.Name);
+                        localStorage.setItem('desig',res.data.Desg);
+                        localStorage.setItem('email',res.data.Email);
                         history.push('/teachertimetable');
                     }
                 }
