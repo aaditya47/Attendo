@@ -240,7 +240,7 @@ export default function Signup() {
                                             validity={passwordValidity}/>
                                     </Alert>
                                     )}
-                            <Button type="submit" colorScheme="teal" variant="outline" width="full" mt={4} onClick={() => onSubmit(stud, id,name,desig,email, mobile, password,passwordValidity)}>
+                            <Button type="submit" data-testid="button" colorScheme="teal" variant="outline" width="full" mt={4} onClick={() => onSubmit(stud, id,name,desig,email, mobile, password,passwordValidity)}>
                                 <Link href="#">
                                     Sign Up
                                 </Link>

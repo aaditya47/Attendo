@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="css-1p6s0yy"
+>
+  <div
+    className="css-12rrdgv"
+  >
+    <div
+      className="css-1ippg70"
+    >
+      <div
+        className="css-xi606m"
+      >
+        <h2
+          className="chakra-heading css-0"
+        >
+          Student Login
+        </h2>
+      </div>
+      <div
+        className="css-jfzvvr"
+      >
+        <form>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="field-8219195888-7"
+              id="field-8219195888-7-label"
+            >
+              Roll Number
+            </label>
+            <input
+              className="chakra-input css-0"
+              disabled={false}
+              id="field-8219195888-7"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Roll Number"
+              readOnly={false}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="chakra-form-control css-1fhgjcy"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="field-8219195888-8"
+              id="field-8219195888-8-label"
+            >
+              Password
+            </label>
+            <div
+              className="chakra-input__group css-4302v8"
+            >
+              <input
+                className="chakra-input css-0"
+                disabled={false}
+                id="field-8219195888-8"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Password"
+                readOnly={false}
+                required={false}
+                type="password"
+                value=""
+              />
+              <div
+                className="chakra-input__right-element css-1x84ua"
+              >
+                <button
+                  className="chakra-button css-13fla2j"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Show
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            className="chakra-button css-ug24of"
+            data-testid="button"
+            onClick={[Function]}
+            type="button"
+          >
+            Sign In
+          </button>
+          <div
+            className="chakra-stack css-owjkmg"
+          >
+            <button
+              className="chakra-button css-q1ts0i"
+              data-testid="button2"
+              type="button"
+            >
+              <a
+                className="chakra-link css-0"
+                href="/"
+              >
+                Return to Home Page
+              </a>
+            </button>
+            <div
+              className="chakra-stack css-84zodg"
+            >
+              <div
+                className="css-1ma4jtm"
+              >
+                <button
+                  className="chakra-button css-5c2176"
+                  type="button"
+                >
+                  <a
+                    className="chakra-link css-0"
+                    href="/signup"
+                  >
+                    New around here?
+                  </a>
+                </button>
+              </div>
+              <div
+                className="css-1ma4jtm"
+              >
+                <button
+                  className="chakra-button css-5c2176"
+                  type="button"
+                >
+                  <a
+                    className="chakra-link css-0"
+                    href="/forgotpassword"
+                  >
+                    Forgot password?
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-1rgqx61"
+  >
+    <img
+      alt="image"
+      className="chakra-image__placeholder css-0"
+    />
+  </div>
+</div>
+`;

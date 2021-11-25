@@ -91,7 +91,7 @@ export default function ForgotPassword() {
                             <FormLabel>Email ID</FormLabel>
                             <Input type="text" placeholder="Email ID" value={email} onChange={(event)=>{setEmail(event.target.value)}} />
                         </FormControl>
-                        <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={()=>{onSubmit(id,email)}}>
+                        <Button colorScheme="teal" data-testid="button" variant="outline" width="full" mt={4} onClick={()=>{onSubmit(id,email)}}>
                                 Get Password
                         </Button>
                         <Button mt={4} colorScheme="teal" variant="link">

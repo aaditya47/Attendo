@@ -1,0 +1,327 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="css-1pf1pew"
+>
+  <div
+    className="css-12rrdgv"
+  >
+    <div
+      className="css-11p92tb"
+    >
+      <div
+        className="css-xi606m"
+      >
+        <h2
+          className="chakra-heading css-0"
+        >
+          Signup
+        </h2>
+      </div>
+      <div
+        className="css-jfzvvr"
+      >
+        <form>
+          <div
+            className="chakra-form-control css-0"
+            role="group"
+          >
+            <div
+              className="chakra-stack css-193rmy8"
+            >
+              <label
+                className="chakra-form__label css-134tjdq"
+                htmlFor="field-9400808266-15"
+                id="field-9400808266-15-label"
+              >
+                Student?
+              </label>
+              <label
+                className="chakra-checkbox css-1uiwwan"
+                onClick={[Function]}
+              >
+                <input
+                  checked={false}
+                  className="chakra-checkbox__input"
+                  id="student-or-teacher"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  style={
+                    Object {
+                      "border": "0px",
+                      "clip": "rect(0px, 0px, 0px, 0px)",
+                      "height": "1px",
+                      "margin": "-1px",
+                      "overflow": "hidden",
+                      "padding": "0px",
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": "1px",
+                    }
+                  }
+                  type="checkbox"
+                  value={false}
+                />
+                <span
+                  aria-hidden={true}
+                  className="chakra-checkbox__control css-dnty2r"
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                />
+              </label>
+            </div>
+          </div>
+          <div
+            className="chakra-form-control css-1fhgjcy"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="field-9400808266-16"
+              id="field-9400808266-16-label"
+            >
+              Roll Number
+            </label>
+            <input
+              className="chakra-input css-0"
+              disabled={false}
+              id="field-9400808266-16"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Roll Number"
+              readOnly={false}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="chakra-form-control css-1fhgjcy"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="field-9400808266-17"
+              id="field-9400808266-17-label"
+            >
+              Name
+            </label>
+            <input
+              className="chakra-input css-0"
+              disabled={false}
+              id="field-9400808266-17"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Name"
+              readOnly={false}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="chakra-form-control css-1fhgjcy"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="field-9400808266-18"
+              id="field-9400808266-18-label"
+            >
+              Designation
+            </label>
+            <div
+              className="chakra-select__wrapper css-1kdduzp"
+            >
+              <select
+                className="chakra-select css-1ik61og"
+                disabled={false}
+                id="field-9400808266-18"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                readOnly={false}
+                required={false}
+                value=""
+              >
+                <option
+                  value=""
+                >
+                  Select option
+                </option>
+                <option
+                  value="Assistant Professor"
+                >
+                  Assistant Professor
+                </option>
+                <option
+                  value="Professor"
+                >
+                  Professor
+                </option>
+              </select>
+              <div
+                className="chakra-select__icon-wrapper css-162mkon"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="chakra-select__icon"
+                  focusable={false}
+                  role="presentation"
+                  style={
+                    Object {
+                      "color": "currentColor",
+                      "height": "1em",
+                      "width": "1em",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            className="chakra-form-control css-1fhgjcy"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="field-9400808266-19"
+              id="field-9400808266-19-label"
+            >
+              Email ID
+            </label>
+            <input
+              className="chakra-input css-0"
+              disabled={false}
+              id="field-9400808266-19"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Email ID"
+              readOnly={false}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="chakra-form-control css-1fhgjcy"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="field-9400808266-20"
+              id="field-9400808266-20-label"
+            >
+              Mobile Number
+            </label>
+            <input
+              className="chakra-input css-0"
+              disabled={false}
+              id="field-9400808266-20"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Mobile Number"
+              readOnly={false}
+              required={false}
+              type="text"
+              value={0}
+            />
+          </div>
+          <div
+            className="chakra-form-control css-1fhgjcy"
+            role="group"
+          >
+            <label
+              className="chakra-form__label css-uvho5g"
+              htmlFor="field-9400808266-21"
+              id="field-9400808266-21-label"
+            >
+              Password
+            </label>
+            <div
+              className="chakra-input__group css-4302v8"
+            >
+              <input
+                className="chakra-input css-0"
+                disabled={false}
+                id="field-9400808266-21"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Password"
+                readOnly={false}
+                required={false}
+                type="password"
+                value={null}
+              />
+              <div
+                className="chakra-input__right-element css-1x84ua"
+              >
+                <button
+                  className="chakra-button css-13fla2j"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Show
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            className="chakra-button css-ug24of"
+            data-testid="button"
+            onClick={[Function]}
+            type="submit"
+          >
+            <a
+              className="chakra-link css-0"
+              href="#"
+            >
+              Sign Up
+            </a>
+          </button>
+          <button
+            className="chakra-button css-q1ts0i"
+            type="button"
+          >
+            <a
+              className="chakra-link css-0"
+              href="/"
+            >
+              Lost your Way? Click here
+            </a>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-zp0um7"
+    style={
+      Object {
+        "paddingTop": "35%",
+      }
+    }
+  >
+    <img
+      className="chakra-image__placeholder css-0"
+    />
+  </div>
+</div>
+`;

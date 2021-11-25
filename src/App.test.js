@@ -1,10 +1,15 @@
+import renderer from 'react-test-renderer'
 import React from 'react';
-import { screen } from '@testing-library/react';
-import { render } from './test-utils';
-import App from './App';
+import ReactDOM from 'react-dom';
+import App from './App'
+import {cleanup } from '@testing-library/react'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn chakra/i);
-  expect(linkElement).toBeInTheDocument();
-});
+afterEach(cleanup)
+it ("renders without crashing",()=>{
+    const div=document.createElement("div");
+    ReactDOM.render(<App></App>,div)
+})
+it("matches snapshot", () => {
+    const tree = renderer.create(<App></App>).toJSON();
+    expect(tree).toMatchSnapshot();
+})

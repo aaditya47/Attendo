@@ -91,11 +91,11 @@ export default function StudentLogin() {
                                     </InputRightElement>
                                 </InputGroup>
                             </FormControl>
-                            <Button colorScheme="teal" variant="outline" width="full" mt={4} onClick={() => onSubmit(RollNo, password)}>
+                            <Button colorScheme="teal" data-testid="button" variant="outline" width="full" mt={4} onClick={() => onSubmit(RollNo, password)}>
                                     Sign In
                             </Button>
                             <VStack>
-                                <Button mt={4} colorScheme="teal" variant="ghost">
+                                <Button mt={4} data-testid="button2" colorScheme="teal" variant="ghost">
                                     <Link href="/">
                                         Return to Home Page
                                     </Link>
