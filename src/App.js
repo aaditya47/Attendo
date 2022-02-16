@@ -31,13 +31,13 @@ import wave from './assets/wave.svg';
 function App() {
   return (
     <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" pl={1} pr={1} pt={1}>
-        <ColorModeSwitcher justifySelf="flex-end"/>
-        <VStack spacing={8}>
-      <Router>
+      <Box textAlign="center" fontSize="xl">
+        <Grid minH="100vh" pl={1} pr={1} pt={1}>
+          <ColorModeSwitcher justifySelf="flex-end" />
+          <VStack spacing={8}>
+            <Router>
               <Switch>
-                <Route exact path="/" component={LoginSelector}/>
+                <Route exact path="/" component={LoginSelector} />
                 <Route exact path="/studentlogin" component={StudentLogin} />
                 <Route exact path="/teacherlogin" component={TeacherLogin} />
                 <Route exact path="/signup" component={Signup} />
@@ -49,11 +49,11 @@ function App() {
                 <Route exact path="/leaveapprove" component={LeaveApprove} />
                 <Route exact path="/forgotpassword" component={ForgotPassword} />
               </Switch>
-    </Router>
-    </VStack>
-    <Image pt={1} alignSelf="flex-end" src={wave} alt="image" />
-          </Grid>
-    </Box>
+            </Router>
+          </VStack>
+          <Image pt={1} alignSelf="flex-end" src={wave} alt="image" />
+        </Grid>
+      </Box>
     </ChakraProvider>
   );
 }
