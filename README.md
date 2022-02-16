@@ -18,11 +18,16 @@ A scalable and responsive web app designed to help students keep track of their 
 
 #### Database:
 
-- MongoDB
+- SQL
 
 ## 📷 Screenshots
-
-Coming soon!
+<img src="/media/FrontPage.png" />
+<img src="/media/StudentLogin.png" />
+<img src="/media/TeacherLogin.png" />
+<img src="/media/Signup.png" />
+<img src="/media/Dashboard.png" />
+<img src="/media/ForgotPassword.png" />
+<img src="/media/LeaveApprove.png" />
 
 ## 🔧 Contributing
 
